@@ -29,6 +29,11 @@
     <link rel="stylesheet" href="<%=basePath%>resources/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="<%=basePath%>resources/css/style.css">
 
+    <script>
+        $(function () {
+            this.find(".form-control").tooltip();
+        });
+    </script>
 </head>
 <body>
 <div>

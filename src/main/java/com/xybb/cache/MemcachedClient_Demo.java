@@ -18,7 +18,7 @@ public class MemcachedClient_Demo {
     private MemcachedClient renameMemcachedClient;
 
     public String set2Get(String[] strings) throws InterruptedException, MemcachedException, TimeoutException {
-        renameMemcachedClient.set(strings[0], CacheParameter.CACHE_EXP, strings[1]);
+        renameMemcachedClient.set(strings[0], CacheParameter.CACHE_EXP_DEFAULT, strings[1]);
         renameMemcachedClient.getTimeoutExceptionThreshold();
         return renameMemcachedClient.get(strings[0]);
     }

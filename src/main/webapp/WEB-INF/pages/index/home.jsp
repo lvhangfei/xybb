@@ -17,11 +17,14 @@
     }
 </style>
 <script>
+<<<<<<< HEAD
     $(function () {
         $("#a1").tooltip();
         $('#a1').popover();
         $('#a1').popover('show');
     });
+=======
+>>>>>>> 部分项目模块搭建...
 
 </script>
 <div class="state">

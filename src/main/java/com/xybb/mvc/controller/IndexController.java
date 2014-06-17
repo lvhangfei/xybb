@@ -1,6 +1,7 @@
 package com.xybb.mvc.controller;
 
 import com.xybb.cache.MemcachedClient_Demo;
+import com.xybb.system.parameter.SensitiveQuestion;
 import com.xybb.utils.IpUtil;
 import net.rubyeye.xmemcached.exception.MemcachedException;
 import org.springframework.stereotype.Controller;
@@ -27,6 +28,7 @@ public class IndexController {
         model.addAttribute("message", "Hello world!");
         IpUtil.getIpAddr(request);
         String s = memcachedClient_demo.set2Get(new String[]{"1iwei", "1"});
+        System.out.println(SensitiveQuestion.SENSITIVEQUESTIONS);
         return view;
     }
 

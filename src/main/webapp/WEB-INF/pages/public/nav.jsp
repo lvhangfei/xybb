@@ -6,9 +6,14 @@
         min-height: 2000px;
         padding-top: 70px;
     }
+
+    .active {
+        border-bottom: 3px solid #d30d15;
+    }
 </style>
 <script>
-
+    $(function () {
+    });
 </script>
 <!-- Fixed navbar -->
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -27,9 +32,19 @@
                 <li><a href="#">主页</a></li>
                 <li><a href="#about">情感交流</a></li>
                 <li class="active"><a href="#contact">二手交易</a></li>
+                <li><a href="#about">我是吃货</a></li>
+                <li><a href="#about">去哪儿玩</a></li>
+                <li><a href="#about">我们毕业了</a></li>
+                <li><a href="#about">找人帮忙</a></li>
             </ul>
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" style="width: 250px" class="form-control" placeholder="搜 索" title="搜 索">
+                </div>
+                <button type="submit" class="btn btn-info">搜索</button>
+            </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="../navbar/">Default</a></li>
+                <li><a href="../navbar/">Wei.L</a></li>
             </ul>
         </div>
         <!--/.nav-collapse -->

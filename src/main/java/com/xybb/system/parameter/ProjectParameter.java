@@ -11,6 +11,9 @@ import org.springframework.stereotype.Component;
 public class ProjectParameter {
 
     public static final String READ_FILE_ENCODINGS = "utf-8";//读取文件编码
+    public static final String MENU_1 = "menu_1";//一级菜单
+    public static final String MENU_2 = "menu_2";//二级菜单
+    public static final String MENU_3 = "menu_3";//三级菜单
 
     @Value("${project.name}")
     private String projectName;//项目名称

@@ -9,5 +9,7 @@ Time: 16:53
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <hr>
+<div style="text-align: center">
+    ${applicationScope.PROJECTVERSION}${applicationScope.PROJECTISVERSION}
+</div>
 
-${applicationScope.PROJECTVERSION}${applicationScope.PROJECTISVERSION}

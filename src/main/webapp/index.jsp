@@ -24,7 +24,7 @@
 </head>
 
 <body>
-<%response.sendRedirect(basePath + "index");%>
+<%response.sendRedirect(basePath + "home");%>
 </body>
 </html>
 

@@ -6,12 +6,13 @@ package com.xybb.utils.emum;
  */
 public enum Classify {
 
-    Home,//主页
-    Affective,//情感交流
-    Foodie,//我是吃货
-    Graduate,//我们毕业了
-    Help,//求帮助
-    Play,//去哪儿玩
-    SecondHand//二手交易
+    home,//主页
+    affective,//情感交流
+    foodie,//我是吃货
+    graduate,//我们毕业了
+    help,//求帮助
+    play,//去哪儿玩
+    secondhand,//二手交易
+    login//登录
 
 }

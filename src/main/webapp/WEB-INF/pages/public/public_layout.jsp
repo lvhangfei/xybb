@@ -23,15 +23,18 @@
     <meta http-equiv="expires" content="0">
     <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
     <meta http-equiv="description" content="This is my page">
-
     <script type="text/javascript" src="<%=basePath%>resources/js/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="<%=basePath%>resources/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>resources/plug/icheck/icheck.min.js"></script>
+
     <link rel="stylesheet" href="<%=basePath%>resources/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="<%=basePath%>resources/css/style.css">
 
+    <link rel="stylesheet" href="<%=basePath%>resources/plug/icheck/skins/flat/_all.css">
+
     <script>
         $(function () {
-            this.find(".form-control").tooltip();
+            //this.find(".form-control").tooltip();
         });
     </script>
 </head>
@@ -40,8 +43,8 @@
     <tiles:insertAttribute name="header"/>
 </div>
 
-<div style="padding-top: 50px">
-    <tiles:insertAttribute name="main-container"/>
+<div style="padding-top: 50px;">
+<tiles:insertAttribute name="main-container"/>
 </div>
 
 <div>

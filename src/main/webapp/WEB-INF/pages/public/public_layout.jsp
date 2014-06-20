@@ -24,15 +24,25 @@
     <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
     <meta http-equiv="description" content="This is my page">
     <script type="text/javascript" src="<%=basePath%>resources/js/jquery-2.0.3.min.js"></script>
-    <script type="text/javascript" src="<%=basePath%>resources/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="<%=basePath%>resources/plug/icheck/icheck.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>resources/js/jquery.cookie.js"></script>
 
+    <script type="text/javascript" src="<%=basePath%>resources/bootstrap/dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="<%=basePath%>resources/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="<%=basePath%>resources/css/style.css">
 
+    <script type="text/javascript" src="<%=basePath%>resources/plug/icheck/icheck.min.js"></script>
     <link rel="stylesheet" href="<%=basePath%>resources/plug/icheck/skins/flat/_all.css">
 
+
+    <script type="text/javascript" src="<%=basePath%>resources/plug/buttons/js/buttons.js"></script>
+    <link rel="stylesheet" href="<%=basePath%>resources/plug/buttons/css/buttons.css">
+
+    <link rel="stylesheet" href="<%=basePath%>resources/plug/font-awesome/css/font-awesome.min.css">
+
+    <script type="text/javascript" src="<%=basePath%>resources/js/application.js"></script>
     <script>
+
+
         $(function () {
             //this.find(".form-control").tooltip();
         });
@@ -44,7 +54,7 @@
 </div>
 
 <div style="padding-top: 50px;">
-<tiles:insertAttribute name="main-container"/>
+    <tiles:insertAttribute name="main-container"/>
 </div>
 
 <div>

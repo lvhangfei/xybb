@@ -1,10 +1,12 @@
 package com.xybb.mvc.controller;
 
+import com.xybb.model.AjaxResult;
 import com.xybb.system.parameter.ProjectParameter;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
 
 
 /**
@@ -16,11 +18,21 @@ import org.springframework.web.servlet.ModelAndView;
 public class LoginConreoller {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public ModelAndView printWelcome() {
+    public ModelAndView go_Login_Page(HttpServletRequest request) {
         ModelAndView view = new ModelAndView();
         view.setViewName("layouts.application_layout.login");
-        view.addObject(ProjectParameter.MENU_1, "login");
+        request.getSession().setAttribute(ProjectParameter.MENU_1, "login");
         return view;
+    }
+
+    @RequestMapping(value = "/do", method = RequestMethod.POST)
+    public
+    @ResponseBody
+    AjaxResult Login(@RequestParam String name, @RequestParam String password, @RequestParam String remember) {
+        AjaxResult ajaxResult = new AjaxResult();
+        ajaxResult.setMsg("用户名密码错误");
+        ajaxResult.setSucceed(false);
+        return ajaxResult;
     }
 
 }

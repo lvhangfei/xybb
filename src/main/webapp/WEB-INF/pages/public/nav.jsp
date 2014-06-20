@@ -9,16 +9,16 @@
         padding-top: 70px;
     }
 
-    .active {
+    .menu_1 {
         border-bottom: 3px solid #d30d15;
     }
 </style>
 <script>
 
-    var menu_1 = "#" + "${menu_1}";
+    var menu_1 = "#" + "${sessionScope.menu_1}";
 
     $(function () {
-        $(menu_1).addClass("active");
+        $(menu_1).addClass("menu_1");
     });
 
 </script>
@@ -32,34 +32,50 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">校园帮帮</a>
+            <a class="navbar-brand" href="#"><i class="icon-flag pull-left"></i>校园帮帮</a>
         </div>
 
         <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
                 <input type="text" style="width: 200px" class="form-control" placeholder="搜 索" title="搜 索">
             </div>
-            <button type="submit" class="btn btn-info">搜索</button>
+            <button class="btn btn-info"><i class='icon-search'></i></button>
         </form>
 
-        <div class="navbar-collapse collapse">
+        <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li id="home"><a href="<%=basePath%>home">主页</a></li>
                 <li id="affective"><a href="<%=basePath%>affective">情感交流</a></li>
                 <li id="secondhand"><a href="<%=basePath%>secondhand">二手交易</a></li>
                 <li id="foodie"><a href="<%=basePath%>foodie">我是吃货</a></li>
                 <li id="play"><a href="<%=basePath%>play">去哪儿玩</a></li>
-                <li id="graduate"><a href="<%=basePath%>graduate">我们毕业了</a></li>
+                <%--<li id="graduate"><a href="<%=basePath%>graduate">我们毕业了</a></li>--%>
                 <li id="help"><a href="<%=basePath%>help">找人帮忙</a></li>
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown"> LIWEI&nbsp;<i class="icon-user"></i></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li class=""><a href="#icons-new">新图标</a></li>
+                        <li class="divider"></li>
+                        <li class=""><a href="#icons-web-app"><i class="icon-edit"></i> Web 应用</a></li>
+                        <li class=""><a href="#icons-text-editor"><i class="icon-save"></i> 文本编辑器</a></li>
+                        <li class=""><a href="#icons-directional"><i class="icon-hand-right"></i> 指示方向</a></li>
+                        <li class=""><a href="#icons-video-player"><i class="icon-play"></i>视频播放器</a></li>
+                        <li class=""><a href="#icons-social"><i class="icon-github"></i> SNS</a></li>
+                        <li class=""><a href="#icons-medical"><i class="icon-stethoscope"></i> 医疗</a></li>
+                    </ul>
+                </li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li id="login"><a href="<%=basePath%>login">登录</a></li>
-                <%--<li><a href="../navbar/">Wei.L</a></li>--%>
+                <li id="login"><a href="<%=basePath%>login"> Login</a></li>
             </ul>
-
         </div>
-        <!--/.nav-collapse -->
+        </li>
+        </ul>
+
+
     </div>
+    <!--/.nav-collapse -->
+</div>
 </div>
 

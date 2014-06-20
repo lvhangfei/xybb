@@ -12,5 +12,4 @@ public class Session2UserInfo {
 
     private User user;
 
-
 }

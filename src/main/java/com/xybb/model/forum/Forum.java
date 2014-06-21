@@ -1,9 +1,11 @@
-package com.xybb.model;
+package com.xybb.model.forum;
 
+import com.xybb.model.user.UserInfo;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by lw on 14-6-19.
@@ -14,14 +16,25 @@ public class Forum {
     @Id
     private String id;
     private String title;//标题
+    private List<String> keyword;//关键字
     private String content;//内容
+
+    private int read_Num;//阅读次数
+    private int praise_Num;//被赞次数
+    private int reply_Num;//回复次数
+    private int Favorite_Num;//收藏次数
+
+
     @DBRef
     private Forum_Theme forum_theme;//所属主题
     @DBRef
     private Forum_Classify forum_classify;//所属分类
     @DBRef
-    private User creator;//创建者
+    private UserInfo creator;//创建者
+
     private Date createTime;//创建时间
+
+    private boolean isDel = false;//是否删除-逻辑删除
 
     public String getId() {
         return id;
@@ -39,12 +52,52 @@ public class Forum {
         this.title = title;
     }
 
+    public List<String> getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(List<String> keyword) {
+        this.keyword = keyword;
+    }
+
     public String getContent() {
         return content;
     }
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public int getRead_Num() {
+        return read_Num;
+    }
+
+    public void setRead_Num(int read_Num) {
+        this.read_Num = read_Num;
+    }
+
+    public int getPraise_Num() {
+        return praise_Num;
+    }
+
+    public void setPraise_Num(int praise_Num) {
+        this.praise_Num = praise_Num;
+    }
+
+    public int getReply_Num() {
+        return reply_Num;
+    }
+
+    public void setReply_Num(int reply_Num) {
+        this.reply_Num = reply_Num;
+    }
+
+    public int getFavorite_Num() {
+        return Favorite_Num;
+    }
+
+    public void setFavorite_Num(int favorite_Num) {
+        Favorite_Num = favorite_Num;
     }
 
     public Forum_Theme getForum_theme() {
@@ -63,11 +116,11 @@ public class Forum {
         this.forum_classify = forum_classify;
     }
 
-    public User getCreator() {
+    public UserInfo getCreator() {
         return creator;
     }
 
-    public void setCreator(User creator) {
+    public void setCreator(UserInfo creator) {
         this.creator = creator;
     }
 
@@ -77,5 +130,13 @@ public class Forum {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public boolean isDel() {
+        return isDel;
+    }
+
+    public void setDel(boolean isDel) {
+        this.isDel = isDel;
     }
 }

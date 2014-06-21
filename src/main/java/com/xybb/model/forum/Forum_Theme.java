@@ -1,15 +1,14 @@
-package com.xybb.model;
+package com.xybb.model.forum;
 
 /**
  * Created by lw on 14-6-19.
- * 帖子分类
+ * 帖子主题
  */
-public class Forum_Classify {
+public class Forum_Theme {
 
     private String id;
     private String name;
     private int sort;//排序
-    private int index;//被关注次数
 
     public String getId() {
         return id;
@@ -33,13 +32,5 @@ public class Forum_Classify {
 
     public void setSort(int sort) {
         this.sort = sort;
-    }
-
-    public int getIndex() {
-        return index;
-    }
-
-    public void setIndex(int index) {
-        this.index = index;
     }
 }

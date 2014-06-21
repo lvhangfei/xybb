@@ -1,4 +1,4 @@
-package com.xybb.model;
+package com.xybb.model.user;
 
 /**
  * Created by lw on 14-6-15.
@@ -10,6 +10,6 @@ public class Session2UserInfo {
 
     private boolean isAdmin;
 
-    private User user;
+    private UserInfo userInfo;
 
 }

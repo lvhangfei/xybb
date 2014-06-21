@@ -1,7 +1,6 @@
 package com.xybb.mvc.service;
 
-import com.xybb.annotation.VerificationAutomaticLogin;
-import com.xybb.model.Session2UserInfo;
+import com.xybb.model.user.Session2UserInfo;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;

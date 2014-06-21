@@ -1,4 +1,4 @@
-package com.xybb.model;
+package com.xybb.model.forum;
 
 /**
  * Created by lw on 14-6-19.
@@ -6,7 +6,7 @@ package com.xybb.model;
  */
 public class Forum_Reply_Reply extends Abstract_Forum_Reply {
 
-    private String forum_Reply;//回复帖子回复的 ID
+    private String forum_Reply;//回复-帖子回复的 ID
 
     public String getForum_Reply() {
         return forum_Reply;

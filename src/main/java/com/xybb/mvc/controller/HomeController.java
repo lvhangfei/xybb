@@ -1,7 +1,7 @@
 package com.xybb.mvc.controller;
 
 import com.xybb.cache.MemcachedClient_Demo;
-import com.xybb.model.Session2UserInfo;
+import com.xybb.model.user.Session2UserInfo;
 import com.xybb.mvc.service.HomeService;
 import com.xybb.system.parameter.ProjectParameter;
 import com.xybb.system.parameter.SensitiveQuestion;

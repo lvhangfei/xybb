@@ -1,5 +1,6 @@
-package com.xybb.model;
+package com.xybb.model.forum;
 
+import com.xybb.model.user.UserInfo;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 
@@ -13,12 +14,13 @@ public abstract class Abstract_Forum_Reply {
 
     @Id
     private String id;
+    private String forum_Id;//回复的帖子的ID
+
     private String content;//回复内容
 
     @DBRef
-    private User creator;//创建者
+    private UserInfo creator;//创建者
     private Date createTime;//创建时间
-
 
     public String getId() {
         return id;
@@ -26,6 +28,14 @@ public abstract class Abstract_Forum_Reply {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getForum_Id() {
+        return forum_Id;
+    }
+
+    public void setForum_Id(String forum_Id) {
+        this.forum_Id = forum_Id;
     }
 
     public String getContent() {
@@ -36,11 +46,11 @@ public abstract class Abstract_Forum_Reply {
         this.content = content;
     }
 
-    public User getCreator() {
+    public UserInfo getCreator() {
         return creator;
     }
 
-    public void setCreator(User creator) {
+    public void setCreator(UserInfo creator) {
         this.creator = creator;
     }
 

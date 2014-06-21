@@ -8,7 +8,7 @@
     <name>xybb</name>
 
     <properties>
-        <spring.version>3.2.0.RELEASE</spring.version>
+        <spring.version>3.2.4.RELEASE</spring.version>
         <org.springframework-version>3.2.4.RELEASE</org.springframework-version>
         <org.aspectj-version>1.6.10</org.aspectj-version>
         <org.slf4j-version>1.7.5</org.slf4j-version>
@@ -263,6 +263,13 @@
             <artifactId>quartz</artifactId>
             <version>1.8.4</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${org.springframework-version}</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
 
         <!--ehcache-->
         <dependency>
@@ -398,6 +405,12 @@
             <scope>compile</scope>
         </dependency>
 
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>2.2.2</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -426,8 +439,6 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-
-
     </build>
 
 

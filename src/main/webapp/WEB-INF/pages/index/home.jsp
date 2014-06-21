@@ -7,10 +7,6 @@
 --%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<script type="text/javascript" src="resources/js/jquery-2.0.3.min.js"></script>
-<script type="text/javascript" src="resources/bootstrap/dist/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="resources/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="resources/css/style.css">
 <style>
     .state {
         padding-left: 100px;

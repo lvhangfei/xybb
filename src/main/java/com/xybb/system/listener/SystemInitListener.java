@@ -1,4 +1,4 @@
-package com.xybb.system.systeminit;
+package com.xybb.system.listener;
 
 import com.xybb.system.parameter.ProjectParameter;
 import com.xybb.system.parameter.SensitiveQuestion;
@@ -12,6 +12,7 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 
 /**
  * Created by lw on 14-6-15.
@@ -19,7 +20,7 @@ import java.io.IOException;
  * 参数初始化
  */
 
-public class SystemInitSetting implements ServletContextListener {
+public class SystemInitListener implements ServletContextListener {
 
     private WebApplicationContext applicationContext;
     private ServletContext context;
@@ -29,9 +30,10 @@ public class SystemInitSetting implements ServletContextListener {
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         this.applicationContext = WebApplicationContextUtils.getWebApplicationContext(servletContextEvent.getServletContext());
         this.context = applicationContext.getServletContext();
+        ProjectParameter.APPLICATIONCONTEXT_PATH = context.getRealPath("/");
         projectParameter = (ProjectParameter) applicationContext.getBean("projectParameter");
         initProjectMessage();
-        // initSensitiveQuestion();
+        initSensitiveQuestion();
     }
 
     @Override
@@ -52,7 +54,7 @@ public class SystemInitSetting implements ServletContextListener {
      * 初始化敏感字信息
      */
     private void initSensitiveQuestion() {
-        String file_path = SystemParameter.USER_DIR + SystemParameter.FILE_SEPARATOR + "WEB-INF/classes/" +
+        String file_path = ProjectParameter.APPLICATIONCONTEXT_PATH + SystemParameter.FILE_SEPARATOR + "WEB-INF/classes/" +
                 projectParameter.getSensitiveQuestion_File_Path();
         File file = new File(file_path);
         try {

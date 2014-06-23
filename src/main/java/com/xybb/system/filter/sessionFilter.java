@@ -20,11 +20,12 @@ public class sessionFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpSession session = ((HttpServletRequest) servletRequest).getSession();
-        if (session.getAttribute("userName") == null) {
+        /*if (session.getAttribute("userName") == null) {
 
         } else {
             filterChain.doFilter(servletRequest, servletResponse);
-        }
+        }*/
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 
     @Override

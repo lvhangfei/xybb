@@ -15,6 +15,9 @@ public class ProjectParameter {
     public static final String MENU_2 = "menu_2";//二级菜单
     public static final String MENU_3 = "menu_3";//三级菜单
 
+    //系统运行时上下文路径-listener 启动后初始化
+    public static String APPLICATIONCONTEXT_PATH;
+
     @Value("${project.name}")
     private String projectName;//项目名称
     @Value("${project.version}")

@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 @Service
 public class UserService {
 
-    @Resource
-    private UserInfoRository userInfoRository;
+    /*@Resource
+    private UserInfoRository userInfoRository;*/
 
     public AjaxResult Login_Do(String name, String password, String remember, HttpServletRequest request) {
         AjaxResult ajaxResult = new AjaxResult();

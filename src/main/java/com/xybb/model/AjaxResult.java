@@ -10,6 +10,11 @@ public class AjaxResult {
     private Object object;//返回数据
     private boolean isSucceed = true;//是否成功
 
+    //枚举类型获取常用返回数据描述
+    public enum State {
+        SUCCEED, FAILURE, ERROR, POWERQUESTION, SENSITIVEQUESTION
+    }
+
     public AjaxResult() {
 
     }
@@ -25,34 +30,51 @@ public class AjaxResult {
         this.isSucceed = isSucceed;
     }
 
-    public static AjaxResult get_Service_Error() {
+    /**
+     * 静态方法，枚举类型获取返回对象
+     *
+     * @param state 返回类型描述
+     * @return
+     */
+    public static AjaxResult getAjaxResult(State state) {
         AjaxResult ajaxResult = new AjaxResult();
-        ajaxResult.setSucceed(false);
-        ajaxResult.setMsg("服务器发生错误！");
+        switch (state) {
+            case SUCCEED:
+                ajaxResult.setSucceed(true);
+                ajaxResult.setMsg("加载成功！");
+                break;
+            case FAILURE:
+                ajaxResult.setSucceed(false);
+                ajaxResult.setMsg("加载失败！");
+                break;
+            case ERROR:
+                ajaxResult.setSucceed(false);
+                ajaxResult.setMsg("数据错误！");
+                break;
+            case POWERQUESTION:
+                ajaxResult.setSucceed(false);
+                ajaxResult.setMsg("权限不足！");
+                break;
+            case SENSITIVEQUESTION:
+                ajaxResult.setSucceed(false);
+                ajaxResult.setMsg("含有敏感字符！");
+                break;
+        }
         return ajaxResult;
     }
 
-    public static AjaxResult get_Data_Error() {
-        AjaxResult ajaxResult = new AjaxResult();
-        ajaxResult.setSucceed(false);
-        ajaxResult.setMsg("服务器端数据发生错误！");
+    /**
+     * 静态方法，枚举类型获取返回对象
+     *
+     * @param state  返回类型描述
+     * @param object 封装数据
+     * @return
+     */
+    public static AjaxResult getAjaxResult(State state, Object object) {
+        AjaxResult ajaxResult = getAjaxResult(state);
+        ajaxResult.setObject(object);
         return ajaxResult;
     }
-
-    public static AjaxResult get_Power_Error() {
-        AjaxResult ajaxResult = new AjaxResult();
-        ajaxResult.setSucceed(false);
-        ajaxResult.setMsg("含有敏感字符！");
-        return ajaxResult;
-    }
-
-    public static AjaxResult get_SensitiveQuestion_Error() {
-        AjaxResult ajaxResult = new AjaxResult();
-        ajaxResult.setSucceed(false);
-        ajaxResult.setMsg("含有敏感字符！");
-        return ajaxResult;
-    }
-
 
     public String getMsg() {
         return msg;

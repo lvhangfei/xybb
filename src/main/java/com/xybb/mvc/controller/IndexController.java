@@ -1,6 +1,7 @@
 package com.xybb.mvc.controller;
 
 import com.xybb.cache.MemcachedClient_Demo;
+import com.xybb.model.AjaxResult;
 import com.xybb.system.parameter.SensitiveQuestion;
 import com.xybb.utils.IpUtil;
 import net.rubyeye.xmemcached.exception.MemcachedException;

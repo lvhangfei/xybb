@@ -1,0 +1,1 @@
+/usr/local/memcached/bin/memcached -d -c 10240 -m 1024 -u root

@@ -81,9 +81,11 @@
     <bean id="exceptionResolver" class="com.xybb.system.exception.ExceptionHandler"/>
 
     <context:property-placeholder
-            location="classpath:mongo.properties,classpath:project.properties"
+            location="classpath:mongo.properties,classpath:project.properties,classpath:email.properties"
             file-encoding="UTF-8" ignore-resource-not-found="true" ignore-unresolvable="true"/>
 
     <import resource="mvc-dispatcher-dao.xml"/>
     <import resource="mvc-dispatcher-memcached.xml"/>
+    <import resource="mvc-dispatcher-quartz.xml"/>
+
 </beans>

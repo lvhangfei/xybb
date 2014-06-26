@@ -21,7 +21,7 @@ public class User_LoginInfo implements Serializable {
 
     private Date time;//登录时间
     private String ip;//登录IP
-    private String os;//登录系统
+    private String os;//用户系统信息
 
     public String getId() {
         return id;

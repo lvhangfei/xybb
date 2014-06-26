@@ -6,6 +6,8 @@ package com.xybb.model.user;
  */
 public class Session2UserInfo {
 
+    private String user_Id;
+
     private String userName;
 
     private boolean isAdmin;

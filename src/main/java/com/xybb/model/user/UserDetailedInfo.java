@@ -2,6 +2,7 @@ package com.xybb.model.user;
 
 import com.xybb.model.forum.Forum_Classify;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -22,8 +23,9 @@ public class UserDetailedInfo implements Serializable {
     private int sex = 0;//性别，0女，1男
     private int age;//年龄由生日自动计算录入
     private Date birthday;//生日
-    private String email;//邮箱
     private String area_Id;//所属地区-递归查询到省
+
+    @Indexed
     private String school;//学校
     private String discipline;//专业
 
@@ -85,14 +87,6 @@ public class UserDetailedInfo implements Serializable {
 
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getArea_Id() {

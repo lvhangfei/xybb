@@ -16,10 +16,9 @@ public class UserInfo implements Serializable {
 
     @Id
     private String id;
-    private String name;
+    private String emailName;//用户邮箱
     private String alias_Name;//用户别名
 
-    @Transient
     private String password;
 
     @DBRef
@@ -33,12 +32,12 @@ public class UserInfo implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getEmailName() {
+        return emailName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setEmailName(String emailName) {
+        this.emailName = emailName;
     }
 
     public String getAlias_Name() {

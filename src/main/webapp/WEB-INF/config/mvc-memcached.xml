@@ -9,8 +9,6 @@
 
     <util:properties id="memcachedProperties" location="classpath:memcached.properties"/>
 
-    <context:property-placeholder location="classpath:memcached.properties"/>
-
     <bean name="xMemcachedClientBuilder" class="net.rubyeye.xmemcached.XMemcachedClientBuilder">
         <constructor-arg>
             <list>
@@ -23,22 +21,22 @@
                     </constructor-arg>
                 </bean>
 
-                <!--<model class="java.net.InetSocketAddress">
+                <!--<bean class="java.net.InetSocketAddress">
                     <constructor-arg>
                         <value>${memcached.server2.host}</value>
                     </constructor-arg>
                     <constructor-arg>
                         <value>${memcached.server2.port}</value>
                     </constructor-arg>
-                </model>
-                <model class="java.net.InetSocketAddress">
+                </bean>
+                <bean class="java.net.InetSocketAddress">
                     <constructor-arg>
                         <value>${memcached.server3.host}</value>
                     </constructor-arg>
                     <constructor-arg>
                         <value>${memcached.server3.port}</value>
                     </constructor-arg>
-                </model>-->
+                </bean>-->
             </list>
         </constructor-arg>
         <constructor-arg>

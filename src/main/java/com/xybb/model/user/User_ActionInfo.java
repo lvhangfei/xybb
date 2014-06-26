@@ -5,7 +5,7 @@ import org.springframework.data.annotation.Id;
 
 /**
  * Created by lw on 14-6-22.
- * 用户动态记录
+ * 用户操作动态记录
  */
 public class User_ActionInfo {
 

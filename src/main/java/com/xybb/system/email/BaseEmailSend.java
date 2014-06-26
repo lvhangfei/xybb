@@ -37,10 +37,10 @@ public class BaseEmailSend {
             attachment.setDescription("Picture of John");
             attachment.setName("John");
 
-            email.setFrom("xybb_admin@163.com"); //发送方,这里可以写多个
-            email.addTo("liweityut@163.com"); // 接收方
-            //email.addCc("402******@qq.com"); // 抄送方
-            //email.addBcc("yuaio@163.com"); // 秘密抄送方
+            email.setFrom("xybb_admin@163.com", "校园帮帮"); //发送方,这里可以写多个
+            email.addTo("liweityut@163.com", "xiaohulu"); // 接收方
+            email.addCc("402******@qq.com"); // 抄送方
+            email.addBcc("yuaio@163.com"); // 秘密抄送方
             email.setCharset("GB2312");
             email.setSubject("标题哦"); // 标题
             email.setMsg("测试测试内容，请查阅！！！");// 内容
@@ -128,8 +128,8 @@ public class BaseEmailSend {
     }
 
     public static void main(String[] args) {
-        //sendSimpleEmail();
+        sendSimpleEmail();
         //sendMultiPartEmail();
-        sendHtmlEmail();
+        //sendHtmlEmail();
     }
 }

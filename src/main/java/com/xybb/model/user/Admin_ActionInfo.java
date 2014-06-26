@@ -12,7 +12,7 @@ public class Admin_ActionInfo {
     private String id;
     private String user_Id;
 
-    private int action_Num;//用户动作： 1删除帖子 2删除回复
+    private int action_Num;//动作： 1删除帖子 2删除回复
 
     private String action_Id;//对应的帖子ID
 

@@ -1,9 +1,9 @@
 <!--
-
+注册
 Created by IntelliJ IDEA.
 User: lw
-Date: 14-6-20
-Time: 21:27
+Date: 14-6-26
+Time: 20:04
 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -17,39 +17,23 @@ Time: 21:27
 
         $("#register_error").hide();
 
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_flat-red',
-            radioClass: 'iradio_flat-red'
-        });
-
-        var remember_me = $.cookie('remember_me');
-
-        //如果设置过自动登录，显示cookie记录
-        if (remember_me == 'true') {
-            $("[name='remember']").iCheck();
-            var remember_emailName = $.cookie('remember_emailName');
-            var remember_password = $.cookie('remember_password');
-            if (remember_emailName != null) {
-                $("#emailName").val(remember_emailName);
-            }
-            if (remember_password != null) {
-                $("#password").val(remember_password);
-            }
-        }
-
-
         /**
          * 文本框获取焦点事件
          */
         $(".form-control").focus(function () {
             $("#register_error").hide();
-            obj2Disabled("login_click", false, "登 录");
+            obj2Disabled("register_click", false, "注 册");
         });
 
-        $("#login_click").click(function () {
-            obj2Disabled("login_click", true, "");
+        /**
+         * 注册事件
+         */
+        $('#register_click').click(function () {
+
+            obj2Disabled("register_click", true, "");
             var emailName = $("#emailName").val();
             var password = $("#password").val();
+            var password_1 = $("#password_1").val();
 
             if (isEmail(emailName)) {
                 errorHint("邮箱格式不正确 !");
@@ -61,20 +45,12 @@ Time: 21:27
                 return false;
             }
 
-            var data = "emailName=" + emailName + "&password=" + password + "&remember=" + $("[name='remember']").val();
-            var remember = $("[name='remember']:checked").length;
-
-            //如果用户设置了自动登录-设置cookie
-            if (remember == 1) {
-                $.cookie('remember_me', 'true', { expires: 15, path: '/' });
-                $.cookie('remember_emailName', emailName, { expires: 15, path: '/' });
-                $.cookie('remember_password', password, { expires: 15, path: '/' });
-            } else {
-                $.cookie('remember_me', 'true', null);
-                $.cookie('remember_emailName', null);
-                $.cookie('remember_password', null);
+            if (password != password_1) {
+                errorHint("两次密码输入不一致 !");
+                return false;
             }
-            //login(submit_Obj, data);
+
+            //  register(submit_Obj, data);
         });
 
     });
@@ -84,8 +60,7 @@ Time: 21:27
      * @param submit_Obj
      * @param data
      */
-    function login(submit_Obj, data) {
-        //alert($("[name='remember']").parent.(".checked"));
+    function register(submit_Obj, data) {
         $.ajax({
             type: "POST",
             url: "<%=basePath%>login/do",
@@ -111,19 +86,18 @@ Time: 21:27
     }
 </script>
 <div class="container" style="min-height: 400px">
-
     <form class="form-signin" role="form">
         <div style="text-align: center">
-            <h4 class="form-signin-heading">请输入email、密码登录到${applicationScope.PROJECTNAME}</h4>
+            <h4 class="form-signin-heading">请输入email、密码进行注册</h4>
         </div>
         <input type="text" id="emailName" class="form-control" placeholder="输入email号码" required autofocus>
         <input type="password" id="password" class="form-control" placeholder="输入密码" required>
-        <label class="checkbox">
-            <input type="checkbox" name="remember" value="remember-me">&nbsp;自动登录
-        </label>
-        <button type="button" id="login_click" class="btn btn-primary form-signin-submit">登&nbsp;录</button>
+        <input type="password" id="password_1" class="form-control" placeholder="再次输入密码" required>
+        <br>
+        <button type="button" id="register_click" class="btn btn-primary form-signin-submit">注&nbsp;册</button>
         <div id="register_error" class="alert alert-warning alert-error" style="margin-top: 10px">
             <strong>&nbsp;提示&nbsp;:&nbsp;</strong>&nbsp;&nbsp; <span id="error"></span>
         </div>
     </form>
+
 </div>

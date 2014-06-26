@@ -11,9 +11,9 @@ import org.springframework.stereotype.Component;
 public class ProjectParameter {
 
     public static final String READ_FILE_ENCODINGS = "utf-8";//读取文件编码
-    public static final String MENU_1 = "menu_1";//一级菜单
-    public static final String MENU_2 = "menu_2";//二级菜单
-    public static final String MENU_3 = "menu_3";//三级菜单
+    public static final String MENU_1 = "menu_1";//一级菜单激活
+    public static final String MENU_2 = "menu_2";//二级菜单激活
+    public static final String MENU_3 = "menu_3";//三级菜单激活
 
     //系统运行时上下文路径-listener 启动后初始化
     public static String APPLICATIONCONTEXT_PATH;

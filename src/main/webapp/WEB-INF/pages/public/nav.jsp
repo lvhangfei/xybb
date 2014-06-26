@@ -40,7 +40,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><i class="icon-flag pull-left"></i>校园帮帮</a>
+            <a class="navbar-brand" href="#"><i class="icon-flag pull-left"></i>${applicationScope.PROJECTNAME}</a>
         </div>
 
         <form class="navbar-form navbar-left" role="search">
@@ -65,7 +65,10 @@
 
                 <c:when test="${empty sessionScope.userName }">
                     <ul class="nav navbar-nav navbar-right">
-                        <li id="login"><a href="<%=basePath%>login"> Login</a></li>
+                        <li id="login"><a href="<%=basePath%>login"> 登录</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li id="register"><a href="<%=basePath%>register"> 注册</a></li>
                     </ul>
                 </c:when>
 

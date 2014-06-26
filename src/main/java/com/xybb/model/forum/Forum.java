@@ -2,7 +2,10 @@ package com.xybb.model.forum;
 
 import com.xybb.model.user.UserInfo;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.CompoundIndex;
+import org.springframework.data.mongodb.core.index.CompoundIndexes;
 import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
@@ -11,10 +14,13 @@ import java.util.List;
  * Created by lw on 14-6-19.
  * 帖子内容
  */
+@Component
+//@CompoundIndex(name = "blocked_inx", def = "{read_Num : 1, praise_Num : 1}")
 public class Forum {
 
     @Id
     private String id;
+
     private String title;//标题
     private List<String> keyword;//关键字
     private String content;//内容

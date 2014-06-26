@@ -21,12 +21,11 @@ Time: 21:27
             checkboxClass: 'icheckbox_flat-red',
             radioClass: 'iradio_flat-red'
         });
-
-        var remember_me = $.cookie('remember_me');
+        var remember_me = COOKIE_UTIL.getCookie('remember_me');
 
         //如果设置过自动登录，显示cookie记录
         if (remember_me == 'true') {
-            $("[name='remember']").iCheck();
+            $("[name='remember']").iCheck('check');
             var remember_emailName = $.cookie('remember_emailName');
             var remember_password = $.cookie('remember_password');
             if (remember_emailName != null) {
@@ -46,6 +45,9 @@ Time: 21:27
             obj2Disabled("login_click", false, "登 录");
         });
 
+        /**
+         * 注册登录按钮事件
+         */
         $("#login_click").click(function () {
             obj2Disabled("login_click", true, "");
             var emailName = $("#emailName").val();
@@ -61,18 +63,18 @@ Time: 21:27
                 return false;
             }
 
-            var data = "emailName=" + emailName + "&password=" + password + "&remember=" + $("[name='remember']").val();
             var remember = $("[name='remember']:checked").length;
+            var data = "emailName=" + emailName + "&password=" + password + "&remember=" + remember;
 
             //如果用户设置了自动登录-设置cookie
             if (remember == 1) {
-                $.cookie('remember_me', 'true', { expires: 15, path: '/' });
-                $.cookie('remember_emailName', emailName, { expires: 15, path: '/' });
-                $.cookie('remember_password', password, { expires: 15, path: '/' });
+                COOKIE_UTIL.savaCookie('remember_me', 'true');
+                COOKIE_UTIL.savaCookie('remember_emailName', emailName);
+                COOKIE_UTIL.savaCookie('remember_password', password);
             } else {
-                $.cookie('remember_me', 'true', null);
-                $.cookie('remember_emailName', null);
-                $.cookie('remember_password', null);
+                COOKIE_UTIL.delCookie('remember_me');
+                COOKIE_UTIL.delCookie('remember_emailName');
+                COOKIE_UTIL.delCookie('remember_password');
             }
             //login(submit_Obj, data);
         });
@@ -84,8 +86,7 @@ Time: 21:27
      * @param submit_Obj
      * @param data
      */
-    function login(submit_Obj, data) {
-        //alert($("[name='remember']").parent.(".checked"));
+    function login(data) {
         $.ajax({
             type: "POST",
             url: "<%=basePath%>login/do",

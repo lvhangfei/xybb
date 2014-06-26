@@ -60,7 +60,7 @@ Time: 20:04
      * @param submit_Obj
      * @param data
      */
-    function register(submit_Obj, data) {
+    function register(data) {
         $.ajax({
             type: "POST",
             url: "<%=basePath%>login/do",

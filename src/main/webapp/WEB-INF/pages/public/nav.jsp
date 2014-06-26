@@ -19,11 +19,11 @@
 
     $(function () {
         $(menu_1).addClass("menu_1");
-        $("#search").mousedown(function () {
+        $("#search").focus(function () {
             $("#home,#affective,#secondhand").hide();
             $("#search").css("width", "430px");
         });
-        $("#search").mouseout(function () {
+        $("#search").blur(function () {
             $("#home,#affective,#secondhand").show();
             $("#search").css("width", "200px");
         });

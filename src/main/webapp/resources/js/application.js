@@ -1,4 +1,4 @@
-//
+//dom加载中设置了disabled属性后显示的图标
 var load_icon = "<i class='icon-spinner icon-spin'></i>";
 
 
@@ -32,3 +32,18 @@ function obj2Disabled(id, isDisabled, msg) {
         obj.removeClass("disabled");
     }
 }
+//cookie 保存设置
+var option_cookie = {expires: 15, path: '/'};
+
+//对cookie 进行保存-获取-删除 封装
+var COOKIE_UTIL = new function () {
+    this.savaCookie = function (the_cookie, the_value, option) {
+        $.cookie(the_cookie, the_value, option_cookie);
+    };
+    this.getCookie = function (the_cookie) {
+        return $.cookie(the_cookie);
+    };
+    this.delCookie = function (the_cookie) {
+        $.cookie(the_cookie, null, option_cookie);
+    };
+};

@@ -1,5 +1,8 @@
 package com.xybb.model.email;
 
+import com.xybb.system.parameter.ProjectParameter;
+import org.apache.commons.mail.DefaultAuthenticator;
+import org.apache.commons.mail.EmailException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -17,15 +20,13 @@ public class Email2Admin extends Email {
     @Value("${fromEmailPassword_admin}")
     private String fromPassword;//发送方密码
 
-    public String getFromEmailName() {
-        return fromEmailName;
+    @Override
+    public void setAuthentication(String userName, String password) {
+        super.setAuthentication(this.fromName, this.fromPassword);
     }
 
-    public String getFromName() {
-        return fromName;
-    }
-
-    public String getFromPassword() {
-        return fromPassword;
+    @Override
+    public org.apache.commons.mail.Email setFrom(String email, String name, String charset) throws EmailException {
+        return super.setFrom(this.fromEmailName, this.fromName, ProjectParameter.APPLICATIONCONTEXT_PATH);
     }
 }

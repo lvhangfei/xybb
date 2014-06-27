@@ -1,6 +1,8 @@
 package com.xybb.utils;
 
 import javax.servlet.http.HttpServletRequest;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 /**
  * Created by lw on 14-6-15.
@@ -8,6 +10,24 @@ import javax.servlet.http.HttpServletRequest;
  * ip地址解析
  */
 public class IpUtil {
+
+
+    /**
+     * 获取本机 IP
+     *
+     * @return
+     */
+    public static String getLocalIp() {
+        InetAddress addr = null;
+        try {
+            addr = InetAddress.getLocalHost();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
+
+        return addr.getHostAddress();//获得本机IP
+    }
+
 
     public static String getIpAddr(HttpServletRequest request) {
 
@@ -23,5 +43,6 @@ public class IpUtil {
         }
         return ip;
     }
+
 
 }

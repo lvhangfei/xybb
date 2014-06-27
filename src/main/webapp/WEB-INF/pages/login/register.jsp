@@ -40,17 +40,21 @@ Time: 20:04
                 return false;
             }
 
-            if (isPasswd(password)) {
-                errorHint("密码格式不正确，6-20个字母、数字、下划线 !");
-                return false;
-            }
+            /* if (isPasswd(password)) {
+             errorHint("密码格式不正确，6-20个字母、数字、下划线 !");
+             return false;
+             }
 
-            if (password != password_1) {
-                errorHint("两次密码输入不一致 !");
-                return false;
-            }
-
-            //  register(submit_Obj, data);
+             if (password != password_1) {
+             errorHint("两次密码输入不一致 !");
+             return false;
+             }*/
+            emailName = encodeURI(emailName);
+            var data = {
+                emailName: emailName,
+                password: password
+            };
+            register(data);
         });
 
     });
@@ -62,8 +66,8 @@ Time: 20:04
      */
     function register(data) {
         $.ajax({
-            type: "POST",
-            url: "<%=basePath%>login/do",
+            type: "GET",
+            url: "<%=basePath%>register/activate",
             data: data,
             success: function (msg) {
                 if (msg.isSuccess) {

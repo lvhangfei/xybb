@@ -2,6 +2,23 @@
 var load_icon = "<i class='icon-spinner icon-spin'></i>";
 
 
+/**
+ * 注册click的回车按钮事件
+ * @param inputId 注册的按钮id
+ * @param actionId 触发的click事件
+ */
+function register_Click(buttonId, actionId) {
+
+    $("#" + buttonId).bind("keypress", function (e) {
+        var code = (e.keyCode ? e.keyCode : e.which);
+        if (code == 13) {
+            $("#" + actionId).click();
+        }
+    });
+
+}
+
+
 //校验邮箱格式
 function isEmail(emailName) {
     var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -47,3 +64,12 @@ var COOKIE_UTIL = new function () {
         $.cookie(the_cookie, null, option_cookie);
     };
 };
+
+/**
+ * 注销事件
+ * @param url
+ */
+function login_Out(url) {
+    COOKIE_UTIL.delCookie("_xybb_auth_record");
+    window.location.href = url;
+}

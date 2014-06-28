@@ -11,9 +11,18 @@ import org.springframework.stereotype.Repository;
  * 用户dao
  */
 @Repository
-public interface UserInfoRository extends MongoRepository<UserInfo, String> {
+public interface UserInfoRository extends MongoRepository<UserInfo, String>, UserInfoRositoryTailored {
 
-    @Query("{'name':?0,'password':?1}")
-    public UserInfo getUserByNameAndPassword(String name, String password);
+    @Query("{'emailName':?0}")
+    public UserInfo getUserByEmailName(String emailName);
+
+    @Query("{'emailName':?0,'password':?1}")
+    public UserInfo getUserByEmailNameAndPassword(String emailName, String password);
+
+    @Query("{'cookie':?0}")
+    public UserInfo getUserByCookie(String cookie);
+
+    @Query("{'userDetailedInfo':{'$ref':'userDetailedInfo', '$id':{'$oid':?0}}}")
+    public UserInfo getUserByUserDetailedInfoId(String userDetailedInfoId);
 
 }

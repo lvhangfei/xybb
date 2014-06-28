@@ -13,6 +13,50 @@ Time: 20:04
 %>
 <link rel="stylesheet" href="<%=basePath%>resources/css/login.css">
 <script>
+
+    /**
+     * 注册-激活邮箱发送
+     * @param data
+     */
+    function register(emailName, password) {
+
+        if (isPasswd(password)) {
+            errorHint("密码格式不正确，6-20个字母、数字、下划线 !");
+            return false;
+        }
+
+        if (password != $("#password_1").val()) {
+            errorHint("两次密码输入不一致 !");
+            return false;
+        }
+        emailName = encodeURI(emailName);
+        var data = {
+            emailName: emailName,
+            password: password
+        };
+
+        $.ajax({
+            type: "GET",
+            url: "<%=basePath%>register/activate",
+            data: data,
+            success: function (data) {
+                if (data.success) {
+                    $(".container.register").html("<h4>激活链接已发送至邮箱 " + emailName + " ，请半小时内激活！</h4>");
+                } else {
+                    errorHint(data.msg);
+                }
+            }
+        });
+    }
+
+    /**
+     * 错误提示
+     */
+    function errorHint(msg) {
+        $("#register_error").show();
+        $("#error").html(msg);
+    }
+
     $(function () {
 
         $("#register_error").hide();
@@ -33,64 +77,32 @@ Time: 20:04
             obj2Disabled("register_click", true, "");
             var emailName = $("#emailName").val();
             var password = $("#password").val();
-            var password_1 = $("#password_1").val();
 
             if (isEmail(emailName)) {
                 errorHint("邮箱格式不正确 !");
                 return false;
             }
+            //注册-用户重复验证
+            $.ajax({
+                type: "GET",
+                url: "<%=basePath%>register/ishaveemailname",
+                data: {emailName: emailName},
+                success: function (msg) {
+                    if (msg.success) {
+                        register(emailName, password);
+                    } else {
+                        errorHint(msg.msg);
+                    }
+                }
+            });
 
-            /* if (isPasswd(password)) {
-             errorHint("密码格式不正确，6-20个字母、数字、下划线 !");
-             return false;
-             }
-
-             if (password != password_1) {
-             errorHint("两次密码输入不一致 !");
-             return false;
-             }*/
-            emailName = encodeURI(emailName);
-            var data = {
-                emailName: emailName,
-                password: password
-            };
-            register(data);
         });
 
     });
 
-    /**
-     * 登录事件
-     * @param submit_Obj
-     * @param data
-     */
-    function register(data) {
-        $.ajax({
-            type: "GET",
-            url: "<%=basePath%>register/activate",
-            data: data,
-            success: function (msg) {
-                if (msg.isSuccess) {
-
-                    window.location;
-                } else {
-                    //submit_Obj.html("登 录");
-                    // submit_Obj.removeClass("disabled");
-                }
-            }
-        });
-    }
-
-    /**
-     * 错误提示
-     */
-    function errorHint(msg) {
-        $("#register_error").show();
-        $("#error").html(msg);
-    }
 </script>
-<div class="container" style="min-height: 400px">
-    <form class="form-signin" role="form">
+<div class="container register" style="min-height: 400px">
+<form class="form-signin" role="form">
         <div style="text-align: center">
             <h4 class="form-signin-heading">请输入email、密码进行注册</h4>
         </div>

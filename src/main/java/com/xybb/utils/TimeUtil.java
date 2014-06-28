@@ -59,6 +59,15 @@ public class TimeUtil {
     }
 
     /**
+     * 获取long时间戳对应的Time
+     *
+     * @return String
+     */
+    public static String getTimeLong(long l) {
+        return new DateTime(l).toString(DATE + " " + TIME);
+    }
+
+    /**
      * 获取当前时间，Time
      *
      * @param dateTime
@@ -93,11 +102,21 @@ public class TimeUtil {
     }
 
     /**
+     * 计算当前时间的时间戳
+     *
+     * @return 时间戳
+     */
+    public static long getNowTimeToLong() {
+        return new DateTime().getMillis();
+    }
+
+
+    /**
      * 计算当前时间后半小时的时间戳
      *
      * @return 时间戳
      */
-    public static long getNowTimeToHalfHour() {
+    public static long getNowTimeToHalfHourToLong() {
         return new DateTime().plusHours(30).getMillis();
     }
 

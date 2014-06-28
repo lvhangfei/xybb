@@ -39,16 +39,8 @@ public class UserDetailedInfo implements Serializable {
     private List<Forum_Classify> forum_Classifies;//关注的功能分类
     private Map<String, List<String>> keyword;//用户在每个分类下自定义的关键字-发帖时候添加
 
-    private int state;//用户状态0正常，1被账户锁定，2 被ip锁定
-    private Date lock_Time;//锁定截止日期
-    private String lock_Explain;//锁定原因说明
-    private List<String> lock_IP;//此用户被锁定的ip
-
-
-    private List<String> cookies;//记录的自动登录cookie
     private Date createTime;//用户创建时间
 
-    private boolean isAdmin = false;//是否是管理员
 
     public UserDetailedInfo() {
     }
@@ -169,46 +161,6 @@ public class UserDetailedInfo implements Serializable {
         this.keyword = keyword;
     }
 
-    public int getState() {
-        return state;
-    }
-
-    public void setState(int state) {
-        this.state = state;
-    }
-
-    public Date getLock_Time() {
-        return lock_Time;
-    }
-
-    public void setLock_Time(Date lock_Time) {
-        this.lock_Time = lock_Time;
-    }
-
-    public String getLock_Explain() {
-        return lock_Explain;
-    }
-
-    public void setLock_Explain(String lock_Explain) {
-        this.lock_Explain = lock_Explain;
-    }
-
-    public List<String> getLock_IP() {
-        return lock_IP;
-    }
-
-    public void setLock_IP(List<String> lock_IP) {
-        this.lock_IP = lock_IP;
-    }
-
-    public List<String> getCookies() {
-        return cookies;
-    }
-
-    public void setCookies(List<String> cookies) {
-        this.cookies = cookies;
-    }
-
     public Date getCreateTime() {
         return createTime;
     }
@@ -217,11 +169,4 @@ public class UserDetailedInfo implements Serializable {
         this.createTime = createTime;
     }
 
-    public boolean isAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(boolean isAdmin) {
-        this.isAdmin = isAdmin;
-    }
 }

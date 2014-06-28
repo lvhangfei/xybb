@@ -1,6 +1,7 @@
 package com.xybb.model.user;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
@@ -16,6 +17,7 @@ public class UserRegister {
 
     @Id
     private String id;
+    @Indexed
     private String emailName;//用户邮箱
     private String password;
 

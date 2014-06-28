@@ -33,6 +33,7 @@ public class CacheParameter {
     public static int CACHE_AUTOCOMPLETE_UPDATE;//缓存自动更新时间间隔
 
     private CacheParameter() {
+
     }
 
 }

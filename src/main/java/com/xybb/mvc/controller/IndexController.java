@@ -29,7 +29,6 @@ public class IndexController {
         model.addAttribute("message", "Hello world!");
         IpUtil.getIpAddr(request);
         String s = memcachedClient_demo.set2Get(new String[]{"1iwei", "1"});
-        System.out.println(SensitiveQuestion.SENSITIVEQUESTIONS);
         return view;
     }
 

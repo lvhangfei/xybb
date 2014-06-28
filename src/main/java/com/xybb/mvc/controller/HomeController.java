@@ -37,7 +37,6 @@ public class HomeController {
         request.getSession().setAttribute(ProjectParameter.MENU_1, "home");
         homeService.go_Home_Page(new Session2UserInfo(), request);
         String s = memcachedClient_demo.set2Get(new String[]{"1iwei", "1"});
-        System.out.println(SensitiveQuestion.SENSITIVEQUESTIONS);
         return view;
     }
 

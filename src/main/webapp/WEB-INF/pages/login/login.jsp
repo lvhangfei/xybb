@@ -13,6 +13,39 @@ Time: 21:27
 %>
 <link rel="stylesheet" href="<%=basePath%>resources/css/login.css">
 <script>
+    var emailName, password, remember, cookie;
+
+    /**
+     * 登录事件
+     * @param submit_Obj
+     * @param data
+     */
+    function login(data) {
+        $.ajax({
+            type: "POST",
+            url: "<%=basePath%>login/do",
+            data: data,
+            success: function (msg) {
+                if (msg.success) {
+                    window.location.href = "<%=basePath%>home";
+                } else {
+                    errorHint(msg.msg);
+                    if (msg.object == 'cookie_failure') {
+                        COOKIE_UTIL.delCookie('_xybb_auth_record');
+                    }
+                }
+            }
+        });
+    }
+
+    /**
+     * 错误提示
+     */
+    function errorHint(msg) {
+        $("#register_error").show();
+        $("#error").html(msg);
+    }
+
     $(function () {
 
         $("#register_error").hide();
@@ -21,21 +54,14 @@ Time: 21:27
             checkboxClass: 'icheckbox_flat-red',
             radioClass: 'iradio_flat-red'
         });
-        var remember_me = COOKIE_UTIL.getCookie('remember_me');
-
-        //如果设置过自动登录，显示cookie记录
-        if (remember_me == 'true') {
-            $("[name='remember']").iCheck('check');
-            var remember_emailName = $.cookie('remember_emailName');
-            var remember_password = $.cookie('remember_password');
-            if (remember_emailName != null) {
-                $("#emailName").val(remember_emailName);
-            }
-            if (remember_password != null) {
-                $("#password").val(remember_password);
-            }
+        cookie = COOKIE_UTIL.getCookie("_xybb_auth_record");
+        //如果设置过自动登录，进行自动登录验证
+        if (cookie != null) {
+            cookie = COOKIE_UTIL.getCookie("_xybb_auth_record");
+            remember = "automatic_login";
+            var data = "emailName=" + emailName + "&password=" + password + "&remember=" + remember + "&cookie=" + cookie;
+            login(data);
         }
-
 
         /**
          * 文本框获取焦点事件
@@ -50,8 +76,8 @@ Time: 21:27
          */
         $("#login_click").click(function () {
             obj2Disabled("login_click", true, "");
-            var emailName = $("#emailName").val();
-            var password = $("#password").val();
+            emailName = $("#emailName").val();
+            password = $("#password").val();
 
             if (isEmail(emailName)) {
                 errorHint("邮箱格式不正确 !");
@@ -63,53 +89,21 @@ Time: 21:27
                 return false;
             }
 
-            var remember = $("[name='remember']:checked").length;
-            var data = "emailName=" + emailName + "&password=" + password + "&remember=" + remember;
+            remember = $("[name='remember']:checked").length;
 
             //如果用户设置了自动登录-设置cookie
             if (remember == 1) {
-                COOKIE_UTIL.savaCookie('remember_me', 'true');
-                COOKIE_UTIL.savaCookie('remember_emailName', emailName);
-                COOKIE_UTIL.savaCookie('remember_password', password);
+                cookie = COOKIE_UTIL.getCookie("JSESSIONID");
+                COOKIE_UTIL.savaCookie('_xybb_auth_record', cookie);
             } else {
-                COOKIE_UTIL.delCookie('remember_me');
-                COOKIE_UTIL.delCookie('remember_emailName');
-                COOKIE_UTIL.delCookie('remember_password');
+                COOKIE_UTIL.delCookie('_xybb_auth_record');
+                cookie = "";
             }
-            //login(submit_Obj, data);
+            var data = "emailName=" + emailName + "&password=" + password + "&remember=" + remember + "&cookie=" + cookie;
+            login(data);
         });
-
     });
 
-    /**
-     * 登录事件
-     * @param submit_Obj
-     * @param data
-     */
-    function login(data) {
-        $.ajax({
-            type: "POST",
-            url: "<%=basePath%>login/do",
-            data: data,
-            success: function (msg) {
-                if (msg.isSuccess) {
-
-                    window.location;
-                } else {
-                    //submit_Obj.html("登 录");
-                    // submit_Obj.removeClass("disabled");
-                }
-            }
-        });
-    }
-
-    /**
-     * 错误提示
-     */
-    function errorHint(msg) {
-        $("#register_error").show();
-        $("#error").html(msg);
-    }
 </script>
 <div class="container" style="min-height: 400px">
 

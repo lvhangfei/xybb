@@ -105,7 +105,6 @@ public class Indexer {
             return;
         }
 
-        System.out.println("Indexing " + f.getCanonicalPath());
         Document doc = new Document();
         doc.add(new Field("contents", new FileReader(f)));
         doc.add(new Field("filename", f.getCanonicalPath(), Field.Store.YES, Field.Index.ANALYZED));

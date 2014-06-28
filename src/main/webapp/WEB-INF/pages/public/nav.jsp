@@ -63,7 +63,7 @@
 
             <c:choose>
 
-                <c:when test="${empty sessionScope.userName }">
+                <c:when test="${empty sessionScope.session2UserInfo }">
                     <ul class="nav navbar-nav navbar-right">
                         <li id="login"><a href="<%=basePath%>login"> 登录</a></li>
                     </ul>
@@ -75,22 +75,42 @@
                 <c:otherwise>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a href="#" data-toggle="dropdown"> LIWEI&nbsp;<i class="icon-user"></i></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li class=""><a href="#icons-new">新图标</a></li>
-                                <li class="divider"></li>
-                                <li class=""><a href="#icons-web-app"><i class="icon-edit"></i> Web 应用</a></li>
-                                <li class=""><a href="#icons-text-editor"><i class="icon-save"></i> 文本编辑器</a></li>
-                                <li class=""><a href="#icons-directional"><i class="icon-hand-right"></i> 指示方向</a></li>
-                                <li class=""><a href="#icons-video-player"><i class="icon-play"></i>视频播放器</a></li>
-                                <li class=""><a href="#icons-social"><i class="icon-github"></i> SNS</a></li>
-                                <li class=""><a href="#icons-medical"><i class="icon-stethoscope"></i> 医疗</a></li>
-                            </ul>
+                            <a href="#"><i class="icon-user"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#"><i class="icon-cogs"></i></a>
+                        </li>
+                        <li class="dropdown" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
+                            <a href="#"><i class="icon-envelope-alt" style="color: red"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="javascript:;" onclick="login_Out('<%=basePath%>login/out')"><i
+                                    class="icon-off"></i></a>
                         </li>
                     </ul>
                 </c:otherwise>
+
+                <%--<c:otherwise>--%>
+                <%--<ul class="nav navbar-nav navbar-right">--%>
+                <%--<li class="dropdown">--%>
+                <%--<a href="#" data-toggle="dropdown"> ${sessionScope.session2UserInfo.alias_Name }&nbsp;<i--%>
+                <%--class="icon-user"></i></a>--%>
+                <%--<ul class="dropdown-menu" role="menu">--%>
+                <%--<li class=""><a href="#icons-new">新图标</a></li>--%>
+                <%--<li class="divider"></li>--%>
+                <%--<li class=""><a href="#icons-web-app"><i class="icon-edit"></i> Web 应用</a></li>--%>
+                <%--<li class=""><a href="#icons-text-editor"><i class="icon-save"></i> 文本编辑器</a></li>--%>
+                <%--<li class=""><a href="#icons-directional"><i class="icon-hand-right"></i> 指示方向</a></li>--%>
+                <%--<li class=""><a href="#icons-video-player"><i class="icon-play"></i>视频播放器</a></li>--%>
+                <%--<li class=""><a href="#icons-social"><i class="icon-github"></i> SNS</a></li>--%>
+                <%--<li class=""><a href="#icons-medical"><i class="icon-stethoscope"></i> 医疗</a></li>--%>
+                <%--</ul>--%>
+                <%--</li>--%>
+                <%--</ul>--%>
+                <%--</c:otherwise>--%>
             </c:choose>
         </div>
+
     </div>
     <!--/.nav-collapse -->
 </div>

@@ -7,10 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 
 
 /**
@@ -39,6 +42,19 @@ public class RegisterConreoller {
     }
 
     /**
+     * 用户注册，用户名是否存在验证
+     *
+     * @param emailName
+     * @return
+     */
+    @RequestMapping(value = "/ishaveemailname", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    AjaxResult isHaveEmailName(@RequestParam String emailName) {
+        return registerService.isHaveEmailName(emailName);
+    }
+
+    /**
      * 用户注册-邮箱激活链接发送
      *
      * @param emailName
@@ -46,9 +62,34 @@ public class RegisterConreoller {
      * @return
      */
     @RequestMapping(value = "/activate", method = RequestMethod.GET)
-    public String activate(@RequestParam String emailName, @RequestParam String password) {
-        registerService.activate(emailName, password);
-        return "";
+    public
+    @ResponseBody
+    AjaxResult activate(@RequestParam String emailName, @RequestParam String password) {
+        return registerService.activate(emailName, password);
     }
+
+    /**
+     * 用户注册-邮箱激活链接处理
+     *
+     * @param emailName
+     * @param uuid
+     * @return
+     */
+    @RequestMapping(value = "/activate/handle", method = RequestMethod.GET)
+    public ModelAndView activate_Handle(@RequestParam String emailName, @RequestParam String uuid, HttpServletRequest request) {
+        AjaxResult ajaxResult = registerService.activate_Handle(emailName, uuid);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("emailName", emailName);
+        //成功-设置seesion
+        if (ajaxResult.isSuccess()) {
+            request.getSession().setAttribute("session2UserInfo", ajaxResult.getObject());
+            modelAndView.setViewName("/login/register_success");
+        } else {
+            modelAndView.addObject("error", ajaxResult.getMsg());
+            modelAndView.setViewName("login/register_failure");
+        }
+        return modelAndView;
+    }
+
 
 }

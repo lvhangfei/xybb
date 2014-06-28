@@ -1,7 +1,7 @@
 package com.xybb.mvc.controller;
 
 import com.xybb.model.AjaxResult;
-import com.xybb.mvc.service.UserService;
+import com.xybb.mvc.service.LoginService;
 import com.xybb.system.parameter.ProjectParameter;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 public class LoginConreoller {
 
     @Resource
-    public UserService userService;
+    public LoginService loginService;
 
     /**
      * 跳转到登录页面
@@ -39,18 +39,35 @@ public class LoginConreoller {
     /**
      * 用户登录验证
      *
-     * @param name
+     * @param emailName
      * @param password
      * @param remember
+     * @param cookie
      * @param request
      * @return
      */
     @RequestMapping(value = "/do", method = RequestMethod.POST)
     public
     @ResponseBody
-    AjaxResult Login_Do(@RequestParam String name, @RequestParam String password, @RequestParam String remember, HttpServletRequest request) {
-
-        return userService.Login_Do(name, password, remember, request);
+    AjaxResult login_Do(@RequestParam String emailName, @RequestParam String password,
+                        @RequestParam String remember,
+                        @RequestParam String cookie, HttpServletRequest request) {
+        return loginService.login_Do(emailName, password, remember, cookie, request);
     }
+
+    /**
+     * 用户注销事件
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/out", method = RequestMethod.GET)
+    public ModelAndView login_Out(HttpServletRequest request) {
+        loginService.login_Out(request);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:/login/");
+        return modelAndView;
+    }
+
 
 }

@@ -8,13 +8,22 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd"
        default-lazy-init="false">
 
-    <!--要实现定时的bean-->
+    <!--要实现定时的bean-系统自我监控状态-->
     <bean id="healthJob" class="com.xybb.system.quartz.HealthJob" init-method="init_Quartz"></bean>
+    <!--要实现定时的bean-定时任务清理-->
+    <bean id="cleanJob" class="com.xybb.system.quartz.ClearJob"></bean>
 
-    <!--  包装要实现定时的bean  -->
+
+    <!--  包装要实现定时的bean-系统自我监控状态  -->
     <bean id="healthdetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
         <property name="targetObject" ref="healthJob"></property>
         <property name="targetMethod" value="Quartz"></property>
+        <property name="concurrent" value="false"></property>
+    </bean>
+    <!--  包装要实现定时的bean-定时任务清理 -->
+    <bean id="cleanJobdetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="cleanJob"></property>
+        <property name="targetMethod" value="clean_job"></property>
         <property name="concurrent" value="false"></property>
     </bean>
 
@@ -28,6 +37,12 @@
         所以我们得通过MethodInvokingJobDetailFactoryBean来转一下 -->
         <property name="jobDetail" ref="healthdetail"/>
     </bean>
+    <bean id="cleanJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="cronExpression">
+            <value>1 * * * * ?</value>
+        </property>
+        <property name="jobDetail" ref="cleanJobdetail"/>
+    </bean>
 
 
     <bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" lazy-init="false">
@@ -36,6 +51,7 @@
         <property name="triggers">
             <list>
                 <ref local="healthTrigger"/>
+                <ref local="cleanJobTrigger"/>
             </list>
         </property>
         <property name="configLocation" value="classpath:quartz.properties"/>

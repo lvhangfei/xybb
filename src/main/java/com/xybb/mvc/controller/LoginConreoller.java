@@ -65,7 +65,7 @@ public class LoginConreoller {
     public ModelAndView login_Out(HttpServletRequest request) {
         loginService.login_Out(request);
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/login/");
+        modelAndView.setViewName("redirect:/login");
         return modelAndView;
     }
 

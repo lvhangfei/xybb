@@ -2,7 +2,6 @@ package com.xybb.mvc.service;
 
 import com.xybb.model.AjaxResult;
 import com.xybb.model.user.Session2UserInfo;
-import com.xybb.model.user.UserDetailedInfo;
 import com.xybb.model.user.UserInfo;
 import com.xybb.mvc.repository.UserDetailedInfoRository;
 import com.xybb.mvc.repository.UserInfoRository;
@@ -17,6 +16,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  * Created by lw on 14-6-21.
+ * 登录service处理class
  */
 @Service
 public class LoginService {
@@ -65,11 +65,11 @@ public class LoginService {
          */
         int state = userInfo.getState();
         if (state == 1) {
-            return new AjaxResult("该账户被锁定!<br>锁定原因:" + userInfo.getLock_Explain() + "<br>解锁日期:" + TimeUtil.getTimeLong(userInfo.getLock_Time()), false);
+            return new AjaxResult("该账户被锁定!<br>锁定原因:" + userInfo.getLock_Explain() + "<br>解锁日期:" + TimeUtil.getLong2Time(userInfo.getLock_Time()), false);
         } else if (state == 2) {
             String ip = IpUtil.getIpAddr(request);
             if (userInfo.getLock_IP().contains(ip)) {
-                return new AjaxResult("该账户IP被锁定!<br>锁定原因:" + userInfo.getLock_Explain() + "<br>解锁日期:" + TimeUtil.getTimeLong(userInfo.getLock_Time()), false);
+                return new AjaxResult("该账户IP被锁定!<br>锁定原因:" + userInfo.getLock_Explain() + "<br>解锁日期:" + TimeUtil.getLong2Time(userInfo.getLock_Time()), false);
             }
         }
 

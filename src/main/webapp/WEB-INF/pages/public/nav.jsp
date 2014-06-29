@@ -10,7 +10,7 @@
     }
 
     .menu_1 {
-        border-bottom: 3px solid #d30d15;
+        border-bottom: 3px solid #2aabd2;
     }
 </style>
 <script>
@@ -27,6 +27,7 @@
             $("#home,#affective,#secondhand").show();
             $("#search").css("width", "200px");
         });
+        $("#user,#setting,#plus,#message,#out").tooltip();
     });
 
 </script>
@@ -60,7 +61,6 @@
                 <%--<li id="graduate"><a href="<%=basePath%>graduate">我们毕业了</a></li>--%>
                 <li id="help"><a href="<%=basePath%>help">找人帮忙</a></li>
             </ul>
-
             <c:choose>
 
                 <c:when test="${empty sessionScope.session2UserInfo }">
@@ -74,16 +74,19 @@
 
                 <c:otherwise>
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
+                        <li id="user" data-toggle="tooltip" data-placement="bottom" title="我的个人信息">
                             <a href="#"><i class="icon-user"></i></a>
                         </li>
-                        <li class="dropdown">
-                            <a href="#"><i class="icon-cogs"></i></a>
+                        <li id="setting" data-toggle="tooltip" data-placement="bottom" title="设置个人信息">
+                            <a href="#"><i class="icon-cog"></i></a>
                         </li>
-                        <li class="dropdown" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
-                            <a href="#"><i class="icon-envelope-alt" style="color: red"></i></a>
+                        <li id="plus" data-toggle="tooltip" data-placement="bottom" title="发布信息">
+                            <a href="#"><i class="icon-plus"></i></a>
                         </li>
-                        <li class="dropdown">
+                        <li id="message" data-toggle="tooltip" data-placement="bottom" title="查看我的消息">
+                            <a href="#"><i class="icon-envelope"></i></a>
+                        </li>
+                        <li id="out" data-toggle="tooltip" data-placement="bottom" title="注销">
                             <a href="javascript:;" onclick="login_Out('<%=basePath%>login/out')"><i
                                     class="icon-off"></i></a>
                         </li>
@@ -92,7 +95,7 @@
 
                 <%--<c:otherwise>--%>
                 <%--<ul class="nav navbar-nav navbar-right">--%>
-                <%--<li class="dropdown">--%>
+                <%--<li  class="dropdown">--%>
                 <%--<a href="#" data-toggle="dropdown"> ${sessionScope.session2UserInfo.alias_Name }&nbsp;<i--%>
                 <%--class="icon-user"></i></a>--%>
                 <%--<ul class="dropdown-menu" role="menu">--%>

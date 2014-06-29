@@ -14,6 +14,7 @@ import org.apache.commons.mail.EmailException;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -109,5 +110,15 @@ public class RegisterService {
         UserInfo userInfo = UserInfo.getUserInfoByUserRegister(userRegister);
         registerRository.delete(userRegister.getId());
         return new AjaxResult("", true, Session2UserInfo.getSession2UserInfo(userInfoRository.save(userInfo)));
+    }
+
+    /**
+     * 定时任务清理用户注册临时信息
+     */
+    public List<UserRegister> clean_Job() {
+        List<UserRegister> userRegisters = registerRository.getUserRegistersByTime(TimeUtil.getNowTimeToLong());
+        if (0 == userRegisters.size()) return userRegisters;
+        registerRository.delete(userRegisters);
+        return userRegisters;
     }
 }

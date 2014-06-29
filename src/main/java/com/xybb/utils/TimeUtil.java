@@ -41,7 +41,7 @@ public class TimeUtil {
     }
 
     /**
-     * 获取当前日期，Date
+     * 获取当前日期，Date格式
      *
      * @return String
      */
@@ -50,7 +50,7 @@ public class TimeUtil {
     }
 
     /**
-     * 获取当前时间，Time
+     * 获取当前时间，Time格式
      *
      * @return String
      */
@@ -59,22 +59,31 @@ public class TimeUtil {
     }
 
     /**
-     * 获取long时间戳对应的Time
+     * 计算当前时间的时间戳
+     *
+     * @return 时间戳
+     */
+    public static long getNowTimeToLong() {
+        return new DateTime().getMillis();
+    }
+
+
+    /**
+     * 获取long时间戳对应的Data格式返回
      *
      * @return String
      */
-    public static String getTimeLong(long l) {
-        return new DateTime(l).toString(DATE + " " + TIME);
+    public static String getLong2Date(long l) {
+        return new DateTime(l).toString(DATE);
     }
 
     /**
-     * 获取当前时间，Time
+     * 获取long时间戳对应的Time格式返回
      *
-     * @param dateTime
      * @return String
      */
-    public static String getDateTime(DateTime dateTime) {
-        return dateTime.toString(DATE + " " + TIME);
+    public static String getLong2Time(long l) {
+        return new DateTime(l).toString(DATE + " " + TIME);
     }
 
 
@@ -90,28 +99,6 @@ public class TimeUtil {
 
 
     /**
-     * 计算五年后的第二个月的最后一天-demo
-     * monthOfYear()     // get monthOfYear property
-     *
-     * @param dateTime
-     * @return String
-     */
-    public static String computationDateDemo(DateTime dateTime) {
-        dateTime = dateTime.plusYears(5).monthOfYear().setCopy(2).dayOfMonth().withMaximumValue();
-        return getDateTime(dateTime);
-    }
-
-    /**
-     * 计算当前时间的时间戳
-     *
-     * @return 时间戳
-     */
-    public static long getNowTimeToLong() {
-        return new DateTime().getMillis();
-    }
-
-
-    /**
      * 计算当前时间后半小时的时间戳
      *
      * @return 时间戳
@@ -120,6 +107,43 @@ public class TimeUtil {
         return new DateTime().plusHours(30).getMillis();
     }
 
+
+    /**
+     * 获取时间戳与现在时间戳的比较值
+     *
+     * @param millis
+     * @return
+     */
+    public static String getMillis2NowTime(final long millis) {
+
+        //两个时间戳除以1000以秒为单位计算
+        long now = new DateTime().getMillis() / 1000;
+        long value = now - (millis / 1000);
+        if (value == 0) {
+            return "刚刚";
+        } else if (0 < value && value < 60) {
+            return value + "秒前";
+        }
+        //以分钟计算
+        value = value / 60;
+        if (0 < value && value < 60) {
+            return value + "分钟前";
+        }
+
+        //以小时计算
+        value = value / 60;
+        if (0 < value && value < 60) {
+            return value + "小时前";
+        }
+
+        //以天计算 1-31
+        value = value / 24;
+        if (0 < value && value < 31) {
+            return value + "天前";
+        }
+        //其它时间返回Time日期格式
+        return getLong2Time(millis);
+    }
 
     /**
      * other demo
@@ -138,8 +162,13 @@ public class TimeUtil {
         //与 jdk日期 互通
         Date jdkDate = new Date();
         dateTime = new DateTime(jdkDate);
+        return "";
+    }
 
-        return getDateTime(dateTime);
+    public static void main(String[] args) {
+        //System.out.println(getNowTimeToLong());
+        long l = 1404025572827L;
+        System.out.println(getMillis2NowTime(getNowTimeToLong()));
     }
 
 }

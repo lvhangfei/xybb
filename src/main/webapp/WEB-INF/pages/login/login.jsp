@@ -21,6 +21,8 @@ Time: 21:27
      * @param data
      */
     function login(data) {
+
+        obj2Disabled("#login_click", true, "");
         $.ajax({
             type: "POST",
             url: "<%=basePath%>login/do",
@@ -34,6 +36,11 @@ Time: 21:27
                         COOKIE_UTIL.delCookie('_xybb_auth_record');
                     }
                 }
+                obj2Disabled("#login_click", false, "登 录");
+            },
+            error: function () {
+                errorHint("服务器处理错误!");
+                obj2Disabled("#login_click", false, "登 录");
             }
         });
     }
@@ -47,8 +54,9 @@ Time: 21:27
     }
 
     $(function () {
-
         $("#register_error").hide();
+
+        $("#emailName,#password").val();
 
         $('input').iCheck({
             checkboxClass: 'icheckbox_flat-red',
@@ -68,14 +76,13 @@ Time: 21:27
          */
         $(".form-control").focus(function () {
             $("#register_error").hide();
-            obj2Disabled("login_click", false, "登 录");
         });
 
         /**
          * 注册登录按钮事件
          */
         $("#login_click").click(function () {
-            obj2Disabled("login_click", true, "");
+
             emailName = $("#emailName").val();
             password = $("#password").val();
 
@@ -105,13 +112,13 @@ Time: 21:27
     });
 
 </script>
-<div class="container" style="min-height: 400px">
+<div class="container login_page">
 
     <form class="form-signin" role="form">
         <div style="text-align: center">
-            <h4 class="form-signin-heading">请输入email、密码登录到${applicationScope.PROJECTNAME}</h4>
+            <h4 class="form-signin-heading">请输入email账号、密码登录到${applicationScope.PROJECTNAME}</h4>
         </div>
-        <input type="text" id="emailName" class="form-control" placeholder="输入email号码" required autofocus>
+        <input type="text" id="emailName" class="form-control" placeholder="输入email账号" required autofocus>
         <input type="password" id="password" class="form-control" placeholder="输入密码" required>
         <label class="checkbox">
             <input type="checkbox" name="remember" value="remember-me">&nbsp;自动登录

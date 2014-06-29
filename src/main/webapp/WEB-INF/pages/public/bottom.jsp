@@ -2,7 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <hr>
-<div style="text-align: center">
-    ${applicationScope.PROJECTVERSION}${applicationScope.PROJECTISVERSION}
+<div style="text-align: left;margin:30px">
+    ©2014
+    ${applicationScope.PROJECTNAME}&nbsp;&nbsp;-version&nbsp;${applicationScope.PROJECTVERSION}&nbsp;&nbsp;${applicationScope.PROJECTISBETA}
 </div>
 

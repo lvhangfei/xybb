@@ -63,4 +63,15 @@ public class UserRegister {
     public void setRegisterTime(long registerTime) {
         this.registerTime = registerTime;
     }
+
+    @Override
+    public String toString() {
+        return "UserRegister{" +
+                "id='" + id + '\'' +
+                ", emailName='" + emailName + '\'' +
+                ", password='" + password + '\'' +
+                ", uuid='" + uuid + '\'' +
+                ", registerTime=" + registerTime +
+                '}';
+    }
 }

@@ -4319,12 +4319,12 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
 }
 
 .navbar-default {
-    background-color: #f8f8f8;
-    border-color: #0064cd;
+    background-color: #EEEEEE;
+    border-color: #adadad;
 }
 
 .navbar-default .navbar-brand {
-    color: #777
+    color: #2aabd2;
 }
 
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
@@ -4337,11 +4337,11 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
 }
 
 .navbar-default .navbar-nav > li > a {
-    color: #777
+    color: #000000;
 }
 
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-    color: #333;
+    color: #2aabd2;
     background-color: transparent
 }
 

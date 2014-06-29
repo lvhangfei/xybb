@@ -35,12 +35,12 @@ function isPasswd(password) {
 
 /**
  * dom不可用，显示加载中
- * @param id            dom-ID
+ * @param id 多个或者单个 dom-ID
  * @param isDisabled    是否显示
  * @param msg           附加的信息
  */
 function obj2Disabled(id, isDisabled, msg) {
-    var obj = $("#" + id);
+    var obj = $(id);
     if (isDisabled) {
         obj.html(msg + load_icon);
         obj.addClass("disabled");

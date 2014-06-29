@@ -44,20 +44,26 @@
 
 
         $(function () {
-            //this.find(".form-control").tooltip();
+            var window_height = $(document).height();
+            var body_height = $("body").height();
+            var title_height = $("#title").height();
+            var content_height = $("#content").height();
+            if (window_height - body_height < 100) {
+                $("#content").css("min-height", "320px");
+            }
         });
     </script>
 </head>
 <body>
-<div>
+<div id="title">
     <tiles:insertAttribute name="header"/>
 </div>
 
-<div style="padding-top: 50px;">
+<div id="content" style="padding-top: 50px;min-height: 450px">
     <tiles:insertAttribute name="main-container"/>
 </div>
 
-<div>
+<div id="bottom">
     <tiles:insertAttribute name="bottom"/>
 </div>
 

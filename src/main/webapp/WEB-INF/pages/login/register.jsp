@@ -20,21 +20,11 @@ Time: 20:04
      */
     function register(emailName, password) {
 
-        if (isPasswd(password)) {
-            errorHint("密码格式不正确，6-20个字母、数字、下划线 !");
-            return false;
-        }
-
-        if (password != $("#password_1").val()) {
-            errorHint("两次密码输入不一致 !");
-            return false;
-        }
         emailName = encodeURI(emailName);
         var data = {
             emailName: emailName,
             password: password
         };
-
         $.ajax({
             type: "GET",
             url: "<%=basePath%>register/activate",
@@ -44,7 +34,11 @@ Time: 20:04
                     $(".container.register").html("<h4>激活链接已发送至邮箱 " + emailName + " ，请半小时内激活！</h4>");
                 } else {
                     errorHint(data.msg);
+                    obj2Disabled("#register_click", false, "注 册");
                 }
+            }, error: function () {
+                errorHint("服务器发生错误");
+                obj2Disabled("#register_click", false, "注 册");
             }
         });
     }
@@ -60,13 +54,12 @@ Time: 20:04
     $(function () {
 
         $("#register_error").hide();
-
+        $("#emailName,#password,#password_1").val();
         /**
          * 文本框获取焦点事件
          */
         $(".form-control").focus(function () {
             $("#register_error").hide();
-            obj2Disabled("register_click", false, "注 册");
         });
 
         /**
@@ -74,7 +67,6 @@ Time: 20:04
          */
         $('#register_click').click(function () {
 
-            obj2Disabled("register_click", true, "");
             var emailName = $("#emailName").val();
             var password = $("#password").val();
 
@@ -82,6 +74,19 @@ Time: 20:04
                 errorHint("邮箱格式不正确 !");
                 return false;
             }
+
+            if (isPasswd(password)) {
+                errorHint("密码格式不正确，6-20个字母、数字、下划线 !");
+                return false;
+            }
+
+            if (password != $("#password_1").val()) {
+                errorHint("两次密码输入不一致 !");
+                return false;
+            }
+
+            obj2Disabled("#register_click", true, "");
+
             //注册-用户重复验证
             $.ajax({
                 type: "GET",
@@ -92,7 +97,12 @@ Time: 20:04
                         register(emailName, password);
                     } else {
                         errorHint(msg.msg);
+                        obj2Disabled("#register_click", false, "注 册");
                     }
+
+                }, error: function () {
+                    errorHint("服务器发生错误");
+                    obj2Disabled("#register_click", false, "注 册");
                 }
             });
 
@@ -102,7 +112,7 @@ Time: 20:04
 
 </script>
 <div class="container register" style="min-height: 400px">
-<form class="form-signin" role="form">
+    <form class="form-signin" role="form">
         <div style="text-align: center">
             <h4 class="form-signin-heading">请输入email、密码进行注册</h4>
         </div>

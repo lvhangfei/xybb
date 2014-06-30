@@ -65,7 +65,7 @@ public class PageUtil {
     private static String setPageUtilsStr(int thisPage, int pageSize, String pageMethodName) {
 
         if (pageSize <= 1) {
-            return "1";
+            return "sdfhsfdsfkdj";
         }
 
         StringBuilder str = new StringBuilder("<ul class=\"pagination\"><li >");

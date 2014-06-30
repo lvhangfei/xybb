@@ -47,14 +47,15 @@ public class RegisterService {
      *
      * @param emailName
      * @param password
+     * @param tag
      * @return
      */
-    public AjaxResult activate(String emailName, String password) {
+    public AjaxResult activate(String emailName, String password, String tag) {
         String uuid = UUID.randomUUID().toString();
         long registerTime = TimeUtil.getNowTimeToHalfHourToLong();
         try {
             //设置临时用户注册信息
-            UserRegister userRegister = registerRository.getUserByEmailName(emailName);
+            UserRegister userRegister = registerRository.getUserByEmailName(emailName, tag);
             if (null != userRegister) {
                 registerRository.delete(userRegister.getId());
             }
@@ -76,7 +77,7 @@ public class RegisterService {
             buffer.append("<a href=\"http://192.168.0.103").
                     //buffer.append("<a href=\"http://").append(IpUtil.getLocalIp()).
                             append(":8080/xybb/register/activate/handle?emailName=").append(emailName).
-                    append("&uuid=").append(uuid).append("\">点击激活</a></h4>");
+                    append("&uuid=").append(uuid).append("&tag=0").append("\">点击激活</a></h4>");
             buffer.append("<hr>");
             email2Admin.setHtmlMsg(buffer.toString());
             email2Admin.send();
@@ -96,9 +97,9 @@ public class RegisterService {
      * @param uuid
      * @return
      */
-    public AjaxResult activate_Handle(String emailName, String uuid) {
+    public AjaxResult activate_Handle(String emailName, String uuid, String tag) {
 
-        UserRegister userRegister = registerRository.getUserByEmailName(emailName);
+        UserRegister userRegister = registerRository.getUserByEmailName(emailName, tag);
 
         if (userRegister == null || !StringUtils.equals(uuid, userRegister.getUuid())) {
             return new AjaxResult("链接无效", false);
@@ -113,7 +114,7 @@ public class RegisterService {
     }
 
     /**
-     * 定时任务清理用户注册临时信息
+     * 定时任务清理用户注册-密码修改临时信息
      */
     public List<UserRegister> clean_Job() {
         List<UserRegister> userRegisters = registerRository.getUserRegistersByTime(TimeUtil.getNowTimeToLong());

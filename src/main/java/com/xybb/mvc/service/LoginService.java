@@ -3,7 +3,6 @@ package com.xybb.mvc.service;
 import com.xybb.model.AjaxResult;
 import com.xybb.model.user.Session2UserInfo;
 import com.xybb.model.user.UserInfo;
-import com.xybb.mvc.repository.UserDetailedInfoRository;
 import com.xybb.mvc.repository.UserInfoRository;
 import com.xybb.utils.IpUtil;
 import com.xybb.utils.TimeUtil;
@@ -24,8 +23,6 @@ public class LoginService {
     @Resource
     private UserInfoRository userInfoRository;
 
-    @Resource
-    private UserDetailedInfoRository userDetailedInfoRository;
 
     /**
      * 登录验证

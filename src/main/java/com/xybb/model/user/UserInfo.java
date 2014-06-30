@@ -1,13 +1,14 @@
 package com.xybb.model.user;
 
+import com.xybb.model.forum.Forum_Classify;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
-import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by lw on 14-6-21.
@@ -23,10 +24,28 @@ public class UserInfo implements Serializable {
     private String emailName;//用户邮箱
     private String alias_Name;//用户别名
 
-    private String password;
+    private String tag;//密码加密字符串
+    private String password;//密码-加密
 
-    @DBRef
-    private UserDetailedInfo userDetailedInfo;//用户的详细信息
+    private int sex = 0;//性别，0女，1男
+    private int age;//年龄由生日自动计算录入
+    private Date birthday;//生日
+    private String area_Id;//所属地区-递归查询到省
+
+    @Indexed
+    private String school;//学校
+    private String discipline;//专业
+
+    private int graduate_Year;//毕业时间-针对非已毕业用户
+
+    private String portrait;//个人头像
+    private int love_State = 0;//恋爱状态: 0单身，1热恋，2已婚，3离异
+    private String explain;//个人说明
+
+    private List<String> userInfo_Ids;//关注的用户
+    private List<Forum_Classify> forum_Classifies;//关注的功能分类
+    private Map<String, List<String>> keyword;//用户在每个分类下自定义的关键字-发帖时候添加
+    private Date createTime;//用户创建时间
 
     private boolean isAdmin = false;//是否是管理员
 
@@ -83,12 +102,124 @@ public class UserInfo implements Serializable {
         this.password = password;
     }
 
-    public UserDetailedInfo getUserDetailedInfo() {
-        return userDetailedInfo;
+    public String getTag() {
+        return tag;
     }
 
-    public void setUserDetailedInfo(UserDetailedInfo userDetailedInfo) {
-        this.userDetailedInfo = userDetailedInfo;
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    public int getSex() {
+        return sex;
+    }
+
+    public void setSex(int sex) {
+        this.sex = sex;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getArea_Id() {
+        return area_Id;
+    }
+
+    public void setArea_Id(String area_Id) {
+        this.area_Id = area_Id;
+    }
+
+    public String getSchool() {
+        return school;
+    }
+
+    public void setSchool(String school) {
+        this.school = school;
+    }
+
+    public String getDiscipline() {
+        return discipline;
+    }
+
+    public void setDiscipline(String discipline) {
+        this.discipline = discipline;
+    }
+
+    public int getGraduate_Year() {
+        return graduate_Year;
+    }
+
+    public void setGraduate_Year(int graduate_Year) {
+        this.graduate_Year = graduate_Year;
+    }
+
+    public String getPortrait() {
+        return portrait;
+    }
+
+    public void setPortrait(String portrait) {
+        this.portrait = portrait;
+    }
+
+    public int getLove_State() {
+        return love_State;
+    }
+
+    public void setLove_State(int love_State) {
+        this.love_State = love_State;
+    }
+
+    public String getExplain() {
+        return explain;
+    }
+
+    public void setExplain(String explain) {
+        this.explain = explain;
+    }
+
+    public List<String> getUserInfo_Ids() {
+        return userInfo_Ids;
+    }
+
+    public void setUserInfo_Ids(List<String> userInfo_Ids) {
+        this.userInfo_Ids = userInfo_Ids;
+    }
+
+    public List<Forum_Classify> getForum_Classifies() {
+        return forum_Classifies;
+    }
+
+    public void setForum_Classifies(List<Forum_Classify> forum_Classifies) {
+        this.forum_Classifies = forum_Classifies;
+    }
+
+    public Map<String, List<String>> getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(Map<String, List<String>> keyword) {
+        this.keyword = keyword;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public boolean isAdmin() {
@@ -97,10 +228,6 @@ public class UserInfo implements Serializable {
 
     public void setAdmin(boolean isAdmin) {
         this.isAdmin = isAdmin;
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
     }
 
     public int getState() {

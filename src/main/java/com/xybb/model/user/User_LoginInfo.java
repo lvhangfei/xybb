@@ -17,7 +17,8 @@ public class User_LoginInfo implements Serializable {
 
     @Id
     private String id;
-    private String user_Id;
+    @DBRef
+    private UserInfo userInfo;
 
     private Date time;//登录时间
     private String ip;//登录IP
@@ -31,12 +32,12 @@ public class User_LoginInfo implements Serializable {
         this.id = id;
     }
 
-    public String getUser_Id() {
-        return user_Id;
+    public UserInfo getUserInfo() {
+        return userInfo;
     }
 
-    public void setUser_Id(String user_Id) {
-        this.user_Id = user_Id;
+    public void setUserInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
     }
 
     public Date getTime() {

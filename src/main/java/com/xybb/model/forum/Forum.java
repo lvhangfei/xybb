@@ -38,7 +38,9 @@ public class Forum {
     @DBRef
     private UserInfo creator;//创建者
 
-    private Date createTime;//创建时间
+    private long createTime;//创建时间
+
+    private boolean isUpdate = false;//是否可以编辑
 
     private boolean isDel = false;//是否删除-逻辑删除
 
@@ -130,12 +132,20 @@ public class Forum {
         this.creator = creator;
     }
 
-    public Date getCreateTime() {
+    public long getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(long createTime) {
         this.createTime = createTime;
+    }
+
+    public boolean isUpdate() {
+        return isUpdate;
+    }
+
+    public void setUpdate(boolean isUpdate) {
+        this.isUpdate = isUpdate;
     }
 
     public boolean isDel() {

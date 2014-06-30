@@ -1,6 +1,5 @@
 package com.xybb.mvc.repository;
 
-import com.xybb.model.user.UserDetailedInfo;
 import com.xybb.model.user.UserInfo;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;

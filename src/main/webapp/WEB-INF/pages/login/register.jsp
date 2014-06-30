@@ -23,7 +23,8 @@ Time: 20:04
         emailName = encodeURI(emailName);
         var data = {
             emailName: emailName,
-            password: password
+            password: password,
+            tag: 0
         };
         $.ajax({
             type: "GET",
@@ -31,7 +32,7 @@ Time: 20:04
             data: data,
             success: function (data) {
                 if (data.success) {
-                    $(".container.register").html("<h4>激活链接已发送至邮箱 " + emailName + " ，请半小时内激活！</h4>");
+                    $(".container.register").html("<p class=\"bg-success\"><h3>激活链接已发送至邮箱 <a href=\"mailto:#\">" + emailName + "</a>，请半小时内激活！</h3></p>");
                 } else {
                     errorHint(data.msg);
                     obj2Disabled("#register_click", false, "注 册");
@@ -124,6 +125,7 @@ Time: 20:04
         <div id="register_error" class="alert alert-warning alert-error" style="margin-top: 10px">
             <strong>&nbsp;提示&nbsp;:&nbsp;</strong>&nbsp;&nbsp; <span id="error"></span>
         </div>
+
     </form>
 
 </div>

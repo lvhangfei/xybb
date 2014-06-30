@@ -10,7 +10,7 @@ import java.util.Date;
 
 /**
  * Created by lw on 14-6-27.
- * 用户注册，邮件激活临时记录表
+ * 用户注册，修改密码，邮件激活链接临时记录表
  */
 @Repository
 public class UserRegister {
@@ -20,7 +20,7 @@ public class UserRegister {
     @Indexed
     private String emailName;//用户邮箱
     private String password;
-
+    private int tag = 0;//0-注册，1-修改密码
     private String uuid;//临时UUID记录值
     private long registerTime;//邮箱激活截止时间
 
@@ -46,6 +46,14 @@ public class UserRegister {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getTag() {
+        return tag;
+    }
+
+    public void setTag(int tag) {
+        this.tag = tag;
     }
 
     public String getUuid() {

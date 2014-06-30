@@ -122,7 +122,9 @@ Time: 21:27
         <input type="password" id="password" class="form-control" placeholder="输入密码" required>
         <label class="checkbox">
             <input type="checkbox" name="remember" value="remember-me">&nbsp;自动登录
+            <button type="button" style="margin-left: 210px" class="btn btn-link">忘记密码</button>
         </label>
+
         <button type="button" id="login_click" class="btn btn-primary form-signin-submit">登&nbsp;录</button>
         <div id="register_error" class="alert alert-warning alert-error" style="margin-top: 10px">
             <strong>&nbsp;提示&nbsp;:&nbsp;</strong>&nbsp;&nbsp; <span id="error"></span>

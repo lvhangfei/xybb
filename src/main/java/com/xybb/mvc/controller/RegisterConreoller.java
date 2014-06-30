@@ -59,13 +59,14 @@ public class RegisterConreoller {
      *
      * @param emailName
      * @param password
+     * @param tag
      * @return
      */
     @RequestMapping(value = "/activate", method = RequestMethod.GET)
     public
     @ResponseBody
-    AjaxResult activate(@RequestParam String emailName, @RequestParam String password) {
-        return registerService.activate(emailName, password);
+    AjaxResult activate(@RequestParam String emailName, @RequestParam String password, @RequestParam String tag) {
+        return registerService.activate(emailName, password, tag);
     }
 
     /**
@@ -73,11 +74,13 @@ public class RegisterConreoller {
      *
      * @param emailName
      * @param uuid
+     * @param tag
+     * @param request
      * @return
      */
     @RequestMapping(value = "/activate/handle", method = RequestMethod.GET)
-    public ModelAndView activate_Handle(@RequestParam String emailName, @RequestParam String uuid, HttpServletRequest request) {
-        AjaxResult ajaxResult = registerService.activate_Handle(emailName, uuid);
+    public ModelAndView activate_Handle(@RequestParam String emailName, @RequestParam String uuid, @RequestParam String tag, HttpServletRequest request) {
+        AjaxResult ajaxResult = registerService.activate_Handle(emailName, uuid, tag);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("emailName", emailName);
         //成功-设置seesion

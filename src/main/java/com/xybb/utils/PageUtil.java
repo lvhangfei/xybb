@@ -8,6 +8,7 @@ import java.util.List;
 public class PageUtil {
 
     public int pageShowSize = 10;//每页显示数量
+    public int pageiiiii = 10;
 
     public int thisPage;//要显示的页
     private int pageSize;//页面总数
@@ -65,7 +66,7 @@ public class PageUtil {
     private static String setPageUtilsStr(int thisPage, int pageSize, String pageMethodName) {
 
         if (pageSize <= 1) {
-            return "";
+            return "1";
         }
 
         StringBuilder str = new StringBuilder("<ul class=\"pagination\"><li >");

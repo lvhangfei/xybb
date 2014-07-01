@@ -12,8 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 
 
 /**
@@ -37,7 +35,7 @@ public class RegisterConreoller {
     public ModelAndView go_Login_Page(HttpServletRequest request) {
         ModelAndView view = new ModelAndView();
         view.setViewName("layouts.application_layout.register");
-        request.getSession().setAttribute(ProjectParameter.MENU_1, "register");
+        request.getSession().setAttribute(ProjectParameter.MENU_1_TEXT, "register");
         return view;
     }
 

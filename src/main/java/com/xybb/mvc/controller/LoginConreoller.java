@@ -32,7 +32,7 @@ public class LoginConreoller {
     public ModelAndView go_Login_Page(HttpServletRequest request) {
         ModelAndView view = new ModelAndView();
         view.setViewName("layouts.application_layout.login");
-        request.getSession().setAttribute(ProjectParameter.MENU_1, "login");
+        request.getSession().setAttribute(ProjectParameter.MENU_1_TEXT, "login");
         return view;
     }
 

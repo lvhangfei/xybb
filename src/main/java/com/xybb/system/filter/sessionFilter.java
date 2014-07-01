@@ -36,13 +36,15 @@ public class sessionFilter implements Filter {
         //用户自动登录
         if (null == session.getAttribute("session2UserInfo")) {
             Cookie[] cookies = request.getCookies();
-            for (Cookie cookie : cookies) {
-                if (StringUtils.equals(cookie.getName(), "_xybb_auth_record")) {
-                    UserInfo userInfo = userInfoRository.getUserByCookie(cookie.getValue());
-                    if (null != userInfo) {
-                        request.getSession().setAttribute("session2UserInfo", Session2UserInfo.getSession2UserInfo(userInfo));
+            if (null != cookies) {
+                for (Cookie cookie : cookies) {
+                    if (StringUtils.equals(cookie.getName(), "_xybb_auth_record")) {
+                        UserInfo userInfo = userInfoRository.getUserByCookie(cookie.getValue());
+                        if (null != userInfo) {
+                            request.getSession().setAttribute("session2UserInfo", Session2UserInfo.getSession2UserInfo(userInfo));
+                        }
+                        break;
                     }
-                    break;
                 }
             }
         }

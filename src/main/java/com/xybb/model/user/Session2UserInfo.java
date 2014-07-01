@@ -9,7 +9,6 @@ import org.apache.commons.lang3.StringUtils;
 public class Session2UserInfo {
 
     private String alias_Name;//用户别名,为空默认为邮箱名称
-
     private boolean isAdmin = false;//是否管理员
     private String userInfo_Id;//关联ID
 

@@ -9,16 +9,28 @@
         padding-top: 70px;
     }
 
-    .menu_1 {
+    .menu_1_text {
         border-bottom: 3px solid #2aabd2;
+    }
+
+    .menu_1_icon {
+        color: #2aabd2;
+        font-family: "Cherry Swash", sans-serif;
     }
 </style>
 <script>
 
-    var menu_1 = "#" + "${sessionScope.menu_1}";
+    var menu_1_text = "${sessionScope.menu_1_text}";
+    var menu_1_icon = "${sessionScope.menu_1_icon}";
 
     $(function () {
-        $(menu_1).addClass("menu_1");
+
+        if (menu_1_text == "") {
+            $("#" + menu_1_icon).css("color", "#2aabd2");
+        } else {
+            $("#" + menu_1_text).addClass("menu_1_text");
+        }
+
         $("#search").focus(function () {
             $("#home,#affective,#secondhand").hide();
             $("#search").css("width", "430px");
@@ -27,7 +39,7 @@
             $("#home,#affective,#secondhand").show();
             $("#search").css("width", "200px");
         });
-        $("#user,#setting,#plus,#message,#out").tooltip();
+        $("#userinfo,#userinfo_setting,#plus,#message,#out").tooltip();
     });
 
 </script>
@@ -74,17 +86,20 @@
 
                 <c:otherwise>
                     <ul class="nav navbar-nav navbar-right">
-                        <li id="user" data-toggle="tooltip" data-placement="bottom" title="我的个人信息">
-                            <a href="#"><i class="icon-user"></i></a>
+                        <li id="userinfo" data-toggle="tooltip" data-placement="bottom" title="我的个人信息">
+                            <a id="userinfo_icon" href="#"><i class="icon-user"></i></a>
                         </li>
-                        <li id="setting" data-toggle="tooltip" data-placement="bottom" title="设置个人信息">
-                            <a href="#"><i class="icon-cog"></i></a>
+                        <li id="userinfo_setting" data-toggle="tooltip" data-placement="bottom" title="设置个人信息"
+                            style="color: red">
+                            <a id="userinfo_setting_icon"
+                               href="<%=basePath%>userinfo/${sessionScope.session2UserInfo.userInfo_Id}/setting">
+                                <i class="icon-cog"></i></a>
                         </li>
                         <li id="plus" data-toggle="tooltip" data-placement="bottom" title="发布信息">
-                            <a href="#"><i class="icon-plus"></i></a>
+                            <a id="plus_icon" href="#"><i class="icon-plus"></i></a>
                         </li>
                         <li id="message" data-toggle="tooltip" data-placement="bottom" title="查看我的消息">
-                            <a href="#"><i class="icon-envelope"></i></a>
+                            <a id="message_icon" href="#"><i class="icon-envelope"></i></a>
                         </li>
                         <li id="out" data-toggle="tooltip" data-placement="bottom" title="注销">
                             <a href="javascript:;" onclick="login_Out('<%=basePath%>login/out')"><i

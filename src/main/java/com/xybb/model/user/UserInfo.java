@@ -27,6 +27,10 @@ public class UserInfo implements Serializable {
     private String tag;//密码加密字符串
     private String password;//密码-加密
 
+    private String password_Email;//找回密码邮箱
+    private Map<Integer, String> password_Q;//密保问题
+
+
     private int sex = 0;//性别，0女，1男
     private int age;//年龄由生日自动计算录入
     private Date birthday;//生日
@@ -36,7 +40,7 @@ public class UserInfo implements Serializable {
     private String school;//学校
     private String discipline;//专业
 
-    private int graduate_Year;//毕业时间-针对非已毕业用户
+    private int graduate_Year;//入学时间-针对非已毕业用户
 
     private String portrait;//个人头像
     private int love_State = 0;//恋爱状态: 0单身，1热恋，2已婚，3离异
@@ -100,6 +104,22 @@ public class UserInfo implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPassword_Email() {
+        return password_Email;
+    }
+
+    public void setPassword_Email(String password_Email) {
+        this.password_Email = password_Email;
+    }
+
+    public Map<Integer, String> getPassword_Q() {
+        return password_Q;
+    }
+
+    public void setPassword_Q(Map<Integer, String> password_Q) {
+        this.password_Q = password_Q;
     }
 
     public String getTag() {

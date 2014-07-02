@@ -17,12 +17,12 @@ Time: 21:27
 
     /**
      * 登录事件
-     * @param submit_Obj
      * @param data
      */
     function login(data) {
 
-        obj2Disabled("#login_click", true, "");
+        //obj2Disabled("#login_click", true, "");
+        $("#login_click").button('loading');
         $.ajax({
             type: "POST",
             url: "<%=basePath%>login/do",
@@ -36,11 +36,13 @@ Time: 21:27
                         COOKIE_UTIL.delCookie('_xybb_auth_record');
                     }
                 }
-                obj2Disabled("#login_click", false, "登 录");
+                $("#login_click").button('reset');
+                // obj2Disabled("#login_click", false, "登 录");
             },
             error: function () {
                 errorHint("服务器处理错误!");
-                obj2Disabled("#login_click", false, "登 录");
+                $("#login_click").button('reset');
+                //obj2Disabled("#login_click", false, "登 录");
             }
         });
     }
@@ -82,7 +84,6 @@ Time: 21:27
          * 注册登录按钮事件
          */
         $("#login_click").click(function () {
-
             emailName = $("#emailName").val();
             password = $("#password").val();
 
@@ -125,7 +126,7 @@ Time: 21:27
             <button type="button" style="margin-left: 210px" class="btn btn-link">忘记密码</button>
         </label>
 
-        <button type="button" id="login_click" class="btn btn-primary form-signin-submit">登&nbsp;录</button>
+        <button type="button" id="login_click" data-loading-text="登录中..." class="btn btn-primary form-signin-submit">登&nbsp;录</button>
         <div id="register_error" class="alert alert-warning alert-error" style="margin-top: 10px">
             <strong>&nbsp;提示&nbsp;:&nbsp;</strong>&nbsp;&nbsp; <span id="error"></span>
         </div>

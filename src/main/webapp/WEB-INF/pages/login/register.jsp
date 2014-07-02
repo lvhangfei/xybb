@@ -20,6 +20,8 @@ Time: 20:04
      */
     function register(emailName, password) {
 
+        $("#register_click").button('loading');
+
         emailName = encodeURI(emailName);
         var data = {
             emailName: emailName,
@@ -35,11 +37,11 @@ Time: 20:04
                     $(".container.register").html("<p class=\"bg-success\"><h3>激活链接已发送至邮箱 <a href=\"mailto:#\">" + emailName + "</a>，请半小时内激活！</h3></p>");
                 } else {
                     errorHint(data.msg);
-                    obj2Disabled("#register_click", false, "注 册");
+                    $("#register_click").button('reset');
                 }
             }, error: function () {
                 errorHint("服务器发生错误");
-                obj2Disabled("#register_click", false, "注 册");
+                $("#register_click").button('reset');
             }
         });
     }
@@ -121,7 +123,9 @@ Time: 20:04
         <input type="password" id="password" class="form-control" placeholder="输入密码" required>
         <input type="password" id="password_1" class="form-control" placeholder="再次输入密码" required>
         <br>
-        <button type="button" id="register_click" class="btn btn-primary form-signin-submit">注&nbsp;册</button>
+        <button type="button" id="register_click" data-loading-text="注册中..." class="btn btn-primary form-signin-submit">
+            注&nbsp;册
+        </button>
         <div id="register_error" class="alert alert-warning alert-error" style="margin-top: 10px">
             <strong>&nbsp;提示&nbsp;:&nbsp;</strong>&nbsp;&nbsp; <span id="error"></span>
         </div>

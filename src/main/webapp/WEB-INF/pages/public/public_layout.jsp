@@ -26,6 +26,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <script type="text/javascript" src="<%=basePath%>resources/js/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="<%=basePath%>resources/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="<%=basePath%>resources/plug/chosen/chosen.jquery.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>resources/plug/chosen/chosen.css"></script>
 
     <script type="text/javascript" src="<%=basePath%>resources/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="<%=basePath%>resources/bootstrap-3.2.0-dist/css/bootstrap.min.css">
@@ -61,7 +63,7 @@
 </div>
 
 <div id="content" style="min-height: 450px;">
-<tiles:insertAttribute name="main-container"/>
+    <tiles:insertAttribute name="main-container"/>
 </div>
 
 <div id="bottom">

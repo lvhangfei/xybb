@@ -3909,7 +3909,9 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
     cursor: default;
     background-color: #fff;
     border: 1px solid #ddd;
-    border-bottom-color: transparent
+    border-bottom-color: transparent;
+    font-size: 15px;
+    font-weight: 900;
 }
 
 .nav-tabs.nav-justified {

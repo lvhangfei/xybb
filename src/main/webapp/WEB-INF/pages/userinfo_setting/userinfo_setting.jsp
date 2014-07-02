@@ -20,17 +20,23 @@ Time: 19:47
         })
     });
 </script>
-<div class="container theme-showcase">
+<div class="container theme-showcase" style="width: 80%">
     <ul class="nav nav-tabs" role="tablist" id="myTab">
-        <li class="active"><a href="#userinfo_setting__home" role="tab" data-toggle="tab">基本信息</a></li>
+        <li class="active"><a href="#userinfo_setting_home" role="tab" data-toggle="tab">基本信息</a></li>
         <li><a href="#userinfo_setting_attention" role="tab" data-toggle="tab">我的关注</a></li>
-        <li><a href="#userinfo_setting_safetysettings" role="tab" data-toggle="tab">安全设置</a></li>
+        <li><a href="#userinfo_setting_safetysetting" role="tab" data-toggle="tab">安全设置</a></li>
     </ul>
 
     <div class="tab-content">
-        <div class="tab-pane active" id="userinfo_setting__home">基本信息</div>
-        <div class="tab-pane" id="userinfo_setting_attention">我的关注</div>
-        <div class="tab-pane" id="userinfo_setting_safetysettings">安全设置</div>
+        <div class="tab-pane active" id="userinfo_setting_home">
+            <jsp:include page="userinfo_setting_home.jsp"></jsp:include>
+        </div>
+        <div class="tab-pane" id="userinfo_setting_attention">
+            <jsp:include page="userinfo_setting_attention.jsp"></jsp:include>
+        </div>
+        <div class="tab-pane" id="userinfo_setting_safetysetting">
+            <jsp:include page="userinfo_setting_safetysetting.jsp"></jsp:include>
+        </div>
     </div>
 
 </div>

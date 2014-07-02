@@ -87,23 +87,23 @@
                 <c:otherwise>
                     <ul class="nav navbar-nav navbar-right">
                         <li id="userinfo" data-toggle="tooltip" data-placement="bottom" title="我的个人信息">
-                            <a id="userinfo_icon" href="#"><i class="icon-user"></i></a>
+                            <a id="userinfo_icon" href="#"><i class="fa fa-user fa-fw"></i> </a>
                         </li>
                         <li id="userinfo_setting" data-toggle="tooltip" data-placement="bottom" title="设置个人信息"
                             style="color: red">
                             <a id="userinfo_setting_icon"
                                href="<%=basePath%>userinfo/${sessionScope.session2UserInfo.userInfo_Id}/setting">
-                                <i class="icon-cog"></i></a>
+                                <i class="fa fa-cog"></i></a>
                         </li>
                         <li id="plus" data-toggle="tooltip" data-placement="bottom" title="发布信息">
-                            <a id="plus_icon" href="#"><i class="icon-plus"></i></a>
+                            <a id="plus_icon" href="#"><i class="fa fa-pencil-square-o"></i></a>
                         </li>
                         <li id="message" data-toggle="tooltip" data-placement="bottom" title="查看我的消息">
-                            <a id="message_icon" href="#"><i class="icon-envelope"></i></a>
+                            <a id="message_icon" href="#"><i class="fa fa-envelope-o"></i></a>
                         </li>
                         <li id="out" data-toggle="tooltip" data-placement="bottom" title="注销">
-                            <a href="javascript:;" onclick="login_Out('<%=basePath%>login/out')"><i
-                                    class="icon-off"></i></a>
+                            <a href="javascript:;" onclick="login_Out('<%=basePath%>login/out')">
+                                <i class="fa fa-power-off"></i></a>
                         </li>
                     </ul>
                 </c:otherwise>

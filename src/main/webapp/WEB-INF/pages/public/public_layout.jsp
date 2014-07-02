@@ -40,7 +40,7 @@
     <script type="text/javascript" src="<%=basePath%>resources/plug/buttons/js/buttons.js"></script>
     <link rel="stylesheet" href="<%=basePath%>resources/plug/buttons/css/buttons.css">
 
-    <link rel="stylesheet" href="<%=basePath%>resources/plug/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<%=basePath%>resources/plug/font-awesome-4.1.0/css/font-awesome.min.css">
 
     <script type="text/javascript" src="<%=basePath%>resources/js/application.js"></script>
     <script>

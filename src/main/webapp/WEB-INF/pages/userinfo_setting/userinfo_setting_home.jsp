@@ -11,6 +11,10 @@ Time: 20:55
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
+<link rel="stylesheet" type="text/css" media="screen"
+      href="<%=basePath%>resources/plug/datepicker/css/datepicker.css">
+<script type="text/javascript"
+        src="<%=basePath%>resources/plug/datepicker/js/bootstrap-datepicker.js"></script>
 <br>
 
 <div>
@@ -49,10 +53,38 @@ Time: 20:55
             </div>
         </div>
         <div class="form-group">
-            <label for="area" class="col-sm-2 control-label">所在地</label>
+            <label for="area_Id" class="col-sm-2 control-label">所在地</label>
 
             <div class="col-sm-8">
-                <input type="password" class="form-control" id="area" placeholder="所在地">
+                <select id="province_Id" style="display:inline-block ;width: 150px">
+                    <option value="-1">所在省</option>
+                    <option value="1">我的小学学校名字是？</option>
+                    <option value="2">我的初中学校名字是？</option>
+                    <option value="3">我的高中学校名字是？</option>
+                    <option value="4">我的大学学校名字是？</option>
+                    <option value="4">我的第一个公司名字是？</option>
+                </select>
+                &nbsp;
+                <select id="city_Id" style="width: 150px">
+                    <option value="-1">所在市</option>
+                    <option value="1">我的小学学校名字是？</option>
+                    <option value="2">我的初中学校名字是？</option>
+                    <option value="3">我的高中学校名字是？</option>
+                    <option value="4">我的大学学校名字是？</option>
+                    <option value="4">我的第一个公司名字是？</option>
+                </select>
+                &nbsp;
+                <select id="area_Id" style="width: 150px">
+                    <option value="-1">所在地区</option>
+                    <option value="1">我的小学学校名字是？</option>
+                    <option value="2">我的初中学校名字是？</option>
+                    <option value="3">我的高中学校名字是？</option>
+                    <option value="4">我的大学学校名字是？</option>
+                    <option value="4">我的第一个公司名字是？</option>
+                </select>
+                &nbsp;
+                <span class="label label-info" style="cursor: hand">地图定位</span>
+                <span class="label label-warning" style="cursor: hand">IP自动定位</span>
             </div>
         </div>
         <div class="form-group">
@@ -81,11 +113,31 @@ Time: 20:55
             </div>
         </div>
         <div class="form-group">
+            <label for="explain" class="col-sm-2 control-label">个人说明</label>
+
+            <div class="col-sm-8">
+                <textarea class="form-control" id="explain" rows="2"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
             <label for="submit_userinfo_setting_home" class="col-sm-2 control-label"></label>
 
             <div class="col-sm-8">
-                <button type="button" id="submit_userinfo_setting_home" class="btn btn-success">保存配置</button>
+                <button type="button" id="submit_userinfo_setting_home" class="btn btn-success">保存基本信息</button>
             </div>
         </div>
     </form>
+
+    <div class="input-append date" id="dpYears" data-date="12-02-2012" data-date-format="dd-mm-yyyy"
+         data-date-viewmode="years">
+        <input class="span2" size="16" type="text" value="12-02-2012" readonly="">
+        <span class="add-on"><i class="icon-calendar"></i></span>
+    </div>
 </div>
+<script>
+    $(function () {
+        $('#dpYears').datepicker();
+
+    });
+</script>

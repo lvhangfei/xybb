@@ -16,7 +16,7 @@ Time: 21:55
 <div>
     <div class="panel panel-success">
         <div class="panel-heading">
-            <h3 class="panel-title">找回密码邮箱</h3>
+            <h3 class="panel-title"><i class="fa fa-envelope"></i>&nbsp;找回密码邮箱</h3>
         </div>
         <div class="panel-body">
             <form class="form-horizontal" role="form" id="form_password_Email">
@@ -46,7 +46,7 @@ Time: 21:55
     </div>
     <div class="panel panel-success">
         <div class="panel-heading">
-            <h3 class="panel-title">密保问题</h3>
+            <h3 class="panel-title"><i class="fa fa-unlock"></i>&nbsp;密保问题</h3>
         </div>
         <div class="panel-body">
             <form class="form-horizontal" role="form" id="form_password_Q">
@@ -55,11 +55,11 @@ Time: 21:55
 
                     <div class="col-sm-6">
                         <select class="form-control" id="question_1">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            <option value="1">我父亲的名字是？</option>
+                            <option value="2">我母亲的名字是？</option>
+                            <option value="3">我妹妹的名字是？</option>
+                            <option value="4">我弟弟的名字是？</option>
+                            <option value="5">我配偶的名字是？</option>
                         </select>
                     </div>
                 </div>
@@ -75,11 +75,11 @@ Time: 21:55
 
                     <div class="col-sm-6">
                         <select class="form-control" id="question_2">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            <option value="1">我父亲的生日是？</option>
+                            <option value="2">我母亲的生日是？</option>
+                            <option value="3">我妹妹的生日是？</option>
+                            <option value="4">我弟弟的生日是？</option>
+                            <option value="5">我配偶的生日是？</option>
                         </select>
                     </div>
                 </div>
@@ -87,7 +87,7 @@ Time: 21:55
                     <label for="answer_2" class="col-sm-2 control-label">密保答案二</label>
 
                     <div class="col-sm-6">
-                        <input type="password" class="form-control" id="answer_2" placeholder="密保答案二">
+                        <input type="password" class="form-control" id="answer_2" placeholder="密保答案二(建议格式为yyyy-mm-dd)">
                     </div>
                 </div>
                 <div class="form-group">
@@ -95,11 +95,11 @@ Time: 21:55
 
                     <div class="col-sm-6">
                         <select class="form-control" id="question_3">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            <option value="1">我的小学学校名字是？</option>
+                            <option value="2">我的初中学校名字是？</option>
+                            <option value="3">我的高中学校名字是？</option>
+                            <option value="4">我的大学学校名字是？</option>
+                            <option value="4">我的第一个公司名字是？</option>
                         </select>
                     </div>
                 </div>

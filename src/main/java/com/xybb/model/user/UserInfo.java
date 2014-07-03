@@ -28,8 +28,7 @@ public class UserInfo implements Serializable {
     private String password;//密码-加密
 
     private String password_Email;//找回密码邮箱
-    private Map<Integer, String> password_Q;//密保问题
-
+    private Map<String, Map<Integer, String>> password_Q;//密保问题
 
     private int sex = 0;//性别，0女，1男
     private int age;//年龄由生日自动计算录入
@@ -69,8 +68,10 @@ public class UserInfo implements Serializable {
      */
     public static UserInfo getUserInfoByUserRegister(UserRegister userRegister) {
         UserInfo userInfo = new UserInfo();
-        userInfo.setEmailName(userRegister.getEmailName());
+        String emailName = userRegister.getEmailName();
+        userInfo.setEmailName(emailName);
         userInfo.setPassword(userRegister.getPassword());
+        userInfo.setPassword_Email(emailName);
         return userInfo;
     }
 
@@ -114,11 +115,11 @@ public class UserInfo implements Serializable {
         this.password_Email = password_Email;
     }
 
-    public Map<Integer, String> getPassword_Q() {
+    public Map<String, Map<Integer, String>> getPassword_Q() {
         return password_Q;
     }
 
-    public void setPassword_Q(Map<Integer, String> password_Q) {
+    public void setPassword_Q(Map<String, Map<Integer, String>> password_Q) {
         this.password_Q = password_Q;
     }
 

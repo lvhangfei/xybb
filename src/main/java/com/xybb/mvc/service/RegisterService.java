@@ -7,7 +7,6 @@ import com.xybb.model.user.UserInfo;
 import com.xybb.model.user.UserRegister;
 import com.xybb.mvc.repository.RegisterRository;
 import com.xybb.mvc.repository.UserInfoRository;
-import com.xybb.utils.IpUtil;
 import com.xybb.utils.TimeUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.mail.EmailException;

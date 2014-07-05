@@ -2,18 +2,18 @@
 
 /* PREFIXED CSS */
 
-.dropdown,
-.dropdown div,
-.dropdown li,
-.dropdown div::after {
+.easydropdown,
+.easydropdown div,
+.easydropdown li,
+.easydropdown div::after {
     -webkit-transition: all 150ms ease-in-out;
     -moz-transition: all 150ms ease-in-out;
     -ms-transition: all 150ms ease-in-out;
     transition: all 150ms ease-in-out;
 }
 
-.dropdown .selected::after,
-.dropdown.scrollable div::after {
+.easydropdown .selected::after,
+.easydropdown.scrollable div::after {
     -webkit-pointer-events: none;
     -moz-pointer-events: none;
     -ms-pointer-events: none;
@@ -22,7 +22,7 @@
 
 /* WRAPPER */
 
-.dropdown {
+.easydropdown {
     position: relative;
     width: 160px;
     border: 1px solid #ccc;
@@ -36,21 +36,21 @@
     user-select: none;
 }
 
-.dropdown.open {
+.easydropdown.open {
     z-index: 2;
 }
 
-.dropdown:hover {
+.easydropdown:hover {
     box-shadow: 0 0 5px rgba(0, 0, 0, .15);
 }
 
-.dropdown.focus {
+.easydropdown.focus {
     box-shadow: 0 0 5px rgba(51, 102, 248, .4);
 }
 
 /* CARAT */
 
-.dropdown .carat {
+.easydropdown .carat {
     position: absolute;
     right: 12px;
     top: 50%;
@@ -59,19 +59,19 @@
     border-top: 8px solid #000;
 }
 
-.dropdown.open .carat {
+.easydropdown.open .carat {
     margin-top: -10px;
     border-top: 6px solid transparent;
     border-bottom: 8px solid #000;
 }
 
-.dropdown.disabled .carat {
+.easydropdown.disabled .carat {
     border-top-color: #999;
 }
 
 /* OLD SELECT (HIDDEN) */
 
-.dropdown .old {
+.easydropdown .old {
     position: absolute;
     left: 0;
     top: 0;
@@ -80,18 +80,18 @@
     overflow: hidden;
 }
 
-.dropdown select {
+.easydropdown select {
     position: absolute;
     left: 0px;
     top: 0px;
 }
 
-.dropdown.touch .old {
+.easydropdown.touch .old {
     width: 100%;
     height: 100%;
 }
 
-.dropdown.touch select {
+.easydropdown.touch select {
     width: 100%;
     height: 100%;
     opacity: 0;
@@ -99,8 +99,8 @@
 
 /* SELECTED FEEDBACK ITEM */
 
-.dropdown .selected,
-.dropdown li {
+.easydropdown .selected,
+.easydropdown li {
     display: block;
     font-size: 18px;
     line-height: 1;
@@ -110,11 +110,11 @@
     white-space: nowrap;
 }
 
-.dropdown.disabled .selected {
+.easydropdown.disabled .selected {
     color: #999;
 }
 
-.dropdown .selected::after {
+.easydropdown .selected::after {
     content: '';
     position: absolute;
     right: 0;
@@ -128,7 +128,7 @@
 
 /* DROP DOWN WRAPPER */
 
-.dropdown div {
+.easydropdown div {
     position: absolute;
     height: 0;
     left: -1px;
@@ -145,14 +145,14 @@
 
 /* Height is adjusted by JS on open */
 
-.dropdown.open div {
+.easydropdown.open div {
     opacity: 1;
     z-index: 2;
 }
 
 /* FADE OVERLAY FOR SCROLLING LISTS */
 
-.dropdown.scrollable div::after {
+.easydropdown.scrollable div::after {
     content: '';
     position: absolute;
     left: 0;
@@ -163,13 +163,13 @@
     box-shadow: inset 0 -50px 30px -35px #fff;
 }
 
-.dropdown.scrollable.bottom div::after {
+.easydropdown.scrollable.bottom div::after {
     opacity: 0;
 }
 
 /* DROP DOWN LIST */
 
-.dropdown ul {
+.easydropdown ul {
     position: absolute;
     left: 0;
     top: 0;
@@ -179,26 +179,26 @@
     overflow: hidden;
 }
 
-.dropdown.scrollable.open ul {
+.easydropdown.scrollable.open ul {
     overflow-y: auto;
 }
 
 /* DROP DOWN LIST ITEMS */
 
-.dropdown li {
+.easydropdown li {
     list-style: none;
     padding: 8px 12px;
 }
 
 /* .focus class is also added on hover */
 
-.dropdown li.focus {
+.easydropdown li.focus {
     background: #d24a67;
     position: relative;
     z-index: 3;
     color: #fff;
 }
 
-.dropdown li.active {
+.easydropdown li.active {
     font-weight: 700;
 }

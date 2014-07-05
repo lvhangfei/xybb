@@ -2,22 +2,22 @@
 
 /* PREFIXED CSS */
 
-.dropdown,
-.dropdown div,
-.dropdown li,
-.dropdown div::after,
-.dropdown .carat,
-.dropdown .carat:after,
-.dropdown .selected::after,
-.dropdown:after {
+.easydropdown,
+.easydropdown div,
+.easydropdown li,
+.easydropdown div::after,
+.easydropdown .carat,
+.easydropdown .carat:after,
+.easydropdown .selected::after,
+.easydropdown:after {
     -webkit-transition: all 150ms ease-in-out;
     -moz-transition: all 150ms ease-in-out;
     -ms-transition: all 150ms ease-in-out;
     transition: all 150ms ease-in-out;
 }
 
-.dropdown .selected::after,
-.dropdown.scrollable div::after {
+.easydropdown .selected::after,
+.easydropdown.scrollable div::after {
     -webkit-pointer-events: none;
     -moz-pointer-events: none;
     -ms-pointer-events: none;
@@ -26,7 +26,7 @@
 
 /* WRAPPER */
 
-.dropdown {
+.easydropdown {
     position: relative;
     width: 250px;
     cursor: pointer;
@@ -38,15 +38,15 @@
     user-select: none;
 }
 
-.dropdown.open {
+.easydropdown.open {
     z-index: 2;
 }
 
-.dropdown:hover {
+.easydropdown:hover {
     background: #f4f4f4;
 }
 
-.dropdown:after {
+.easydropdown:after {
     content: '';
     position: absolute;
     right: 3px;
@@ -56,14 +56,14 @@
     background: transparent;
 }
 
-.dropdown.focus:after {
+.easydropdown.focus:after {
     background: #0180d1;
 }
 
 /* CARAT */
 
-.dropdown .carat,
-.dropdown .carat:after {
+.easydropdown .carat,
+.easydropdown .carat:after {
     content: '';
     position: absolute;
     right: 10px;
@@ -80,25 +80,25 @@
 
 }
 
-.dropdown .carat:after {
+.easydropdown .carat:after {
     margin-top: -10px;
     right: -8px;
     border-top-color: #f8f8f8;
 }
 
-.dropdown:hover .carat:after {
+.easydropdown:hover .carat:after {
     border-top-color: #f4f4f4;
 }
 
-.dropdown.focus .carat {
+.easydropdown.focus .carat {
     border-top-color: #f8f8f8;
 }
 
-.dropdown.focus .carat:after {
+.easydropdown.focus .carat:after {
     border-top-color: #0180d1;
 }
 
-.dropdown.open .carat {
+.easydropdown.open .carat {
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
     -ms-transform: rotate(180deg);
@@ -107,7 +107,7 @@
 
 /* OLD SELECT (HIDDEN) */
 
-.dropdown .old {
+.easydropdown .old {
     position: absolute;
     left: 0;
     top: 0;
@@ -116,18 +116,18 @@
     overflow: hidden;
 }
 
-.dropdown select {
+.easydropdown select {
     position: absolute;
     left: 0px;
     top: 0px;
 }
 
-.dropdown.touch .old {
+.easydropdown.touch .old {
     width: 100%;
     height: 100%;
 }
 
-.dropdown.touch select {
+.easydropdown.touch select {
     width: 100%;
     height: 100%;
     opacity: 0;
@@ -135,8 +135,8 @@
 
 /* SELECTED FEEDBACK ITEM */
 
-.dropdown .selected,
-.dropdown li {
+.easydropdown .selected,
+.easydropdown li {
     display: block;
     font-size: 18px;
     line-height: 1;
@@ -146,7 +146,7 @@
     white-space: nowrap;
 }
 
-.dropdown .selected::after {
+.easydropdown .selected::after {
     content: '';
     position: absolute;
     right: 0;
@@ -158,13 +158,13 @@
     box-shadow: inset -55px 0 25px -20px #f8f8f8;
 }
 
-.dropdown:hover .selected::after {
+.easydropdown:hover .selected::after {
     box-shadow: inset -55px 0 25px -20px #f4f4f4;
 }
 
 /* DROP DOWN WRAPPER */
 
-.dropdown div {
+.easydropdown div {
     position: absolute;
     height: 0;
     left: 0;
@@ -176,20 +176,20 @@
     opacity: 0;
 }
 
-.dropdown:hover div {
+.easydropdown:hover div {
     background: #f4f4f4;
 }
 
 /* Height is adjusted by JS on open */
 
-.dropdown.open div {
+.easydropdown.open div {
     opacity: 1;
     z-index: 2;
 }
 
 /* FADE OVERLAY FOR SCROLLING LISTS */
 
-.dropdown.scrollable div::after {
+.easydropdown.scrollable div::after {
     content: '';
     position: absolute;
     left: 0;
@@ -200,17 +200,17 @@
     box-shadow: inset 0 -50px 30px -35px #f8f8f8;
 }
 
-.dropdown.scrollable:hover div::after {
+.easydropdown.scrollable:hover div::after {
     box-shadow: inset 0 -50px 30px -35px #f4f4f4;
 }
 
-.dropdown.scrollable.bottom div::after {
+.easydropdown.scrollable.bottom div::after {
     opacity: 0;
 }
 
 /* DROP DOWN LIST */
 
-.dropdown ul {
+.easydropdown ul {
     position: absolute;
     left: 0;
     top: 0;
@@ -220,27 +220,27 @@
     overflow: hidden;
 }
 
-.dropdown.scrollable.open ul {
+.easydropdown.scrollable.open ul {
     overflow-y: auto;
 }
 
 /* DROP DOWN LIST ITEMS */
 
-.dropdown li {
+.easydropdown li {
     list-style: none;
     padding: 8px 12px;
 }
 
 /* .focus class is also added on hover */
 
-.dropdown li.focus {
+.easydropdown li.focus {
     background: #0180d1;
     position: relative;
     z-index: 3;
     color: #fff;
 }
 
-.dropdown li.active {
+.easydropdown li.active {
     background: #0180d1;
     color: #fff;
 }

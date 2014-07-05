@@ -4,7 +4,7 @@ import com.xybb.model.AjaxResult;
 import com.xybb.model.user.Session2UserInfo;
 import com.xybb.model.user.UserInfo;
 import com.xybb.mvc.repository.UserInfoRository;
-import com.xybb.utils.IpUtil;
+import com.xybb.utils.ip.IpUtil;
 import com.xybb.utils.TimeUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;

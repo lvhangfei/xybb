@@ -4,7 +4,7 @@ import com.xybb.cache.MemcachedClient_Demo;
 import com.xybb.model.user.Session2UserInfo;
 import com.xybb.mvc.service.HomeService;
 import com.xybb.system.parameter.ProjectParameter;
-import com.xybb.utils.IpUtil;
+import com.xybb.utils.ip.IpUtil;
 import net.rubyeye.xmemcached.exception.MemcachedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

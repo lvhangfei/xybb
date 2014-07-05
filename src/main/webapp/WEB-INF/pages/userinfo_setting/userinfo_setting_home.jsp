@@ -11,8 +11,6 @@ Time: 20:55
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
-<script type="text/javascript" src="<%=basePath%>resources/plug/easydropdown/jquery.easydropdown.min.js"></script>
-<link rel="stylesheet" href="<%=basePath%>resources/plug/easydropdown/easydropdown.metro.css">
 <br>
 
 <div>
@@ -91,7 +89,7 @@ Time: 20:55
                 <option value="03">03</option>
                 <option value="04">04</option>
                 <option value="05">05</option>
-                <option value="06">06</option>
+                <option value="06" selected>06</option>
                 <option value="07">07</option>
                 <option value="08">08</option>
                 <option value="09">09</option>
@@ -115,7 +113,7 @@ Time: 20:55
                 <option value="12">12</option>
                 <option value="13">13</option>
                 <option value="14">14</option>
-                <option value="15">15</option>
+                <option value="15" selected>15</option>
                 <option value="16">16</option>
                 <option value="17">17</option>
                 <option value="18">18</option>
@@ -165,6 +163,7 @@ Time: 20:55
             &nbsp;
             <span class="label label-info" style="cursor: hand">地图定位</span>
             <span class="label label-warning" style="cursor: hand">IP自动定位</span>
+            //http://api.map.baidu.com/location/ip?ak=EFfee49fcb850d465bd2d2d26b30b050
         </div>
     </div>
     <div class="form-group">
@@ -208,30 +207,6 @@ Time: 20:55
         </div>
     </div>
 </form>
-<select class="dropdown">
-    <option value="1">Option 1</option>
-    <option value="2">Option 2</option>
-    <option value="3">Option 3</option>
-    <option value="4">Option 4</option>
-</select>
-<%--<select class="dropdown">
-    <option value="" class="label">Month</option>
-    <option value="1">January</option>
-    <option value="2">February</option>
-    <option value="3">March</option>
-</select>
-<select class="dropdown">
-    <option value="" class="label">Month</option>
-    <option value="1">January</option>
-    <option value="2" selected>February</option>
-    <option value="3">March</option>
-</select>
-<select class="dropdown" disabled>
-    <option value="" class="label">Month</option>
-    <option value="1">January</option>
-    <option value="2">February</option>
-    <option value="3">March</option>
-</select>--%>
 </div>
 <script>
     $(function () {

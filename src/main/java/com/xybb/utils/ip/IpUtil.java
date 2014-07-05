@@ -1,4 +1,4 @@
-package com.xybb.utils;
+package com.xybb.utils.ip;
 
 import javax.servlet.http.HttpServletRequest;
 import java.net.InetAddress;

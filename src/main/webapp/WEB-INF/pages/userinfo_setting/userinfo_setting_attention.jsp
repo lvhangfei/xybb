@@ -47,9 +47,8 @@ Time: 20:55
 
     $(".chosen-select").chosen({width: "300px;", disable_search_threshold: 10});
     $(function () {
-        $("input[type=checkbox][name='a']").click(function () {
-            // alert(this.val());
-            alert(this.css("background-color", "red"));
+        $("input[type=checkbox][name='a']").change(function () {
+            alert(this);
         });
     });
 </script>

@@ -4,6 +4,13 @@ import com.xybb.model.AjaxResult;
 
 /**
  * Created by lw on 14-7-5.
+ * 参数	含义	          格式	    说明
+ * ip	    ip地址	       string	可选，ip不出现，或者出现且为空字符串的情况下，会使用当前访问者的IP地址作为定位参数
+ * ak	    用户密钥	       string	必选，在lbs云官网注册的access key，作为访问的依据
+ * sn	    用户的权限签名	   string	可选，若用户所用ak的校验方式为sn校验时该参数必须。（sn生成算法）
+ * coor	    输出的坐标格式	   string	可选，coor不出现时，默认为百度墨卡托坐标；coor=bd09ll时，返回为百度经纬度坐标
+ * <p/>
+ * //http://api.map.baidu.com/location/ip?ak=EFfee49fcb850d465bd2d2d26b30b050
  */
 public class BaiDu_Ip_Api {
     /*

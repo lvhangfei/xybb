@@ -163,7 +163,7 @@ Time: 20:55
             &nbsp;
             <span class="label label-info" style="cursor: hand">地图定位</span>
             <span class="label label-warning" style="cursor: hand">IP自动定位</span>
-            //http://api.map.baidu.com/location/ip?ak=EFfee49fcb850d465bd2d2d26b30b050
+
         </div>
     </div>
     <div class="form-group">

@@ -1,10 +1,7 @@
 package com.xybb.utils;
 
-import com.xybb.model.email.Email;
-
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.Hashtable;
 import java.util.Properties;
 
 /**
@@ -13,17 +10,19 @@ import java.util.Properties;
  */
 public class EmailUtil {
 
-
-    private static Properties email_Pro = new Properties();
-    private static String encoding;
+    /**
+     * email邮件配置文件
+     */
+    private static Properties email_Properties = new Properties();
+    private static String encoding_Mail_Properties;
 
     /**
      * 读取properties配置文件信息
      */
     static {
         try {
-            email_Pro.load(EmailUtil.class.getClassLoader().getResourceAsStream("email.properties"));
-            encoding = email_Pro.getProperty("read_charset");
+            email_Properties.load(EmailUtil.class.getClassLoader().getResourceAsStream("email.properties"));
+            encoding_Mail_Properties = email_Properties.getProperty("read_charset");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -33,9 +32,9 @@ public class EmailUtil {
      * 根据key得到value的值
      */
     public static String getValue(String key) {
-        String value = email_Pro.getProperty(key);
+        String value = email_Properties.getProperty(key);
         try {
-            value = new String(value.getBytes("ISO8859-1"), encoding);
+            value = new String(value.getBytes("ISO8859-1"), encoding_Mail_Properties);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

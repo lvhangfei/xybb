@@ -19,6 +19,8 @@ public class ProjectParameter {
     public static final String MENU_2_ICON = "menu_2_icon";//二级菜单激活
     public static final String MENU_3_ICON = "menu_3_icon";//三级菜单激活
 
+    //百度IP接口调用--用户密钥
+    public static final String BAIDU_IP_API_AK = "EFfee49fcb850d465bd2d2d26b30b0501";
 
     //系统运行时上下文路径-listener 启动后初始化
     public static String APPLICATIONCONTEXT_PATH;

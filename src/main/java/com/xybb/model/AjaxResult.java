@@ -28,6 +28,11 @@ public class AjaxResult {
         this.success = success;
     }
 
+    public AjaxResult(boolean success, Object object) {
+        this.success = success;
+        this.object = object;
+    }
+
     public AjaxResult(String msg, boolean success, Object object) {
         this.msg = msg;
         this.success = success;

@@ -4,7 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.xybb.model.AjaxResult;
 import com.xybb.model.Ip_BaiDu_Api;
 import com.xybb.system.parameter.ProjectParameter;
+import com.xybb.utils.LogFactoryUtil;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.logging.Log;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
@@ -20,6 +22,7 @@ import java.net.UnknownHostException;
  */
 public class IpUtil {
 
+    private static final Log RUNTIME_LOG = LogFactoryUtil.RUNTIME_LOG;
 
     //IP地址请求链接
     private static final String IP_HOST_ADDRESS = "http://api.map.baidu.com/location/ip?ak=" + ProjectParameter.BAIDU_IP_API_AK + "&ip=";
@@ -46,12 +49,12 @@ public class IpUtil {
      * @return
      * @throws java.io.UnsupportedEncodingException
      */
-    public static AjaxResult getAddressByIp(String ip) throws UnsupportedEncodingException {
+    public static AjaxResult getAddressByIp(final String ip) throws UnsupportedEncodingException {
         if (StringUtils.isBlank(ip)) {
             return new AjaxResult("IP不合法", false);
         }
         //拼接最终请求链接
-        String returnStr = getResultByUrlPath(IP_HOST_ADDRESS + ip);
+        final String returnStr = getResultByUrlPath(IP_HOST_ADDRESS + ip);
         if (null == returnStr) {
             return new AjaxResult("IP解析出错", false);
         }
@@ -59,12 +62,15 @@ public class IpUtil {
         try {
             ip_baiDu_api = new ObjectMapper().readValue(returnStr, Ip_BaiDu_Api.class);
         } catch (IOException e) {
-            e.printStackTrace();
+            RUNTIME_LOG.debug("---------------getAddressByIp(){}---------------");
+            RUNTIME_LOG.debug("---------------IP解析封装bean出错---------------");
+            RUNTIME_LOG.debug("---------------ip:" + ip + "---------------");
+            RUNTIME_LOG.debug("---------------returnStr:" + returnStr + "---------------");
             return new AjaxResult("IP解析封装bean出错", false);
         }
 
         //获取返回状态码
-        int status = ip_baiDu_api.getStatus();
+        final int status = ip_baiDu_api.getStatus();
         switch (status) {
             case 0:
                 return new AjaxResult(true, ip_baiDu_api);
@@ -80,7 +86,6 @@ public class IpUtil {
                 return new AjaxResult("ak不存在或者非法", false, ip_baiDu_api);
             default:
                 return AjaxResult.getAjaxResult(AjaxResult.State.ERROR);
-
         }
     }
 
@@ -90,7 +95,7 @@ public class IpUtil {
      * @param url_Path 请求的地址
      * @return 数据处理出错返回null
      */
-    private static String getResultByUrlPath(String url_Path) {
+    private static String getResultByUrlPath(final String url_Path) {
         URL url;
         HttpURLConnection connection = null;
         try {
@@ -117,7 +122,10 @@ public class IpUtil {
             reader.close();
             return buffer.toString();
         } catch (IOException e) {
-            e.printStackTrace();
+            RUNTIME_LOG.debug("---------------getResultByUrlPath(){}---------------");
+            RUNTIME_LOG.debug("---------------请求webServicr并获取结果集出错---------------");
+            RUNTIME_LOG.debug("---------------url_Path:" + url_Path + "---------------");
+            RUNTIME_LOG.debug("---------------errorMessage:" + e.getMessage() + "---------------");
             return null;
         } finally {
             if (connection != null) {
@@ -149,7 +157,7 @@ public class IpUtil {
      * @param request
      * @return
      */
-    public static String getIpAddr(HttpServletRequest request) {
+    public static String getIpAddr(final HttpServletRequest request) {
 
         String ip = request.getHeader("x-forwarded-for");
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {

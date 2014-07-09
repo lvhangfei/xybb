@@ -19,7 +19,7 @@ import java.io.IOException;
  * session 过滤器。
  * 如果设置了自动登录取cookie判断是否可以自动登录
  */
-public class sessionFilter implements Filter {
+public class SessionFilter implements Filter {
 
     private UserInfoRository userInfoRository;
 

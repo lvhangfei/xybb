@@ -29,13 +29,13 @@ public class ClearJob {
     private void clean_UserRegisters() {
         List<UserRegister> userRegisters = registerService.clean_Job();
         if (userRegisters.size() != 0) {
-            LogFactoryUtil.quartz_Log.info("===============定时清理任务:清理用户临时记录====================");
-            LogFactoryUtil.quartz_Log.info("===============定时清理任务:共计-[" + userRegisters.size() + "]个====================");
+            LogFactoryUtil.QUARTZ_LOG.info("===============定时清理任务:清理用户临时记录====================");
+            LogFactoryUtil.QUARTZ_LOG.info("===============定时清理任务:共计-[" + userRegisters.size() + "]个====================");
             for (UserRegister userRegister : userRegisters) {
-                LogFactoryUtil.quartz_Log.info(userRegister);
+                LogFactoryUtil.QUARTZ_LOG.info(userRegister);
             }
         } else {
-            LogFactoryUtil.quartz_Log.info("===============定时清理任务:无用户临时记录====================");
+            LogFactoryUtil.QUARTZ_LOG.info("===============定时清理任务:无用户临时记录====================");
         }
     }
 }

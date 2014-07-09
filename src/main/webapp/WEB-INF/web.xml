@@ -22,6 +22,16 @@
         <listener-class>com.xybb.system.listener.SystemInitListener</listener-class>
     </listener>
 
+    <!--系统维护过滤器-->
+    <filter>
+        <filter-name>system_maintenance_filter</filter-name>
+        <filter-class>com.xybb.system.filter.System_MaintenanceFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>system_maintenance_filter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
     <!--编码过滤-->
     <filter>
         <filter-name>encodingFilter</filter-name>
@@ -55,7 +65,7 @@
     <!--session过滤器-->
     <filter>
         <filter-name>sessionFilter</filter-name>
-        <filter-class>com.xybb.system.filter.sessionFilter</filter-class>
+        <filter-class>com.xybb.system.filter.SessionFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>sessionFilter</filter-name>

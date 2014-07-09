@@ -9,6 +9,11 @@ import org.apache.commons.logging.LogFactory;
  */
 public class LogFactoryUtil {
 
-    public static final Log quartz_Log = LogFactory.getLog("quartzLog");
+    public static final Log QUARTZ_LOG = LogFactory.getLog("quartzLog");
+    public static final Log RUNTIME_LOG = LogFactory.getLog("runtimeLog");
+    public static final Log SYSTEMMONITOR_LOG = LogFactory.getLog("systemmonitorLog");
+    public static final Log MECACHED_LOG = LogFactory.getLog("mecachedLog");
+    public static final Log ES_LOG = LogFactory.getLog("esLog");
+    public static final Log EMAIL_LOG = LogFactory.getLog("emailLog");
 
 }

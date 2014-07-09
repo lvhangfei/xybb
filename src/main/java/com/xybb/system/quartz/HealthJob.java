@@ -1,5 +1,6 @@
 package com.xybb.system.quartz;
 
+import com.xybb.system.parameter.SystemParameter;
 import org.springframework.stereotype.Component;
 
 /**
@@ -14,6 +15,13 @@ public class HealthJob {
     }
 
     public void Quartz() {
+
+        if (SystemParameter.IS_SYSTEM_MAINTENANCE) {
+            SystemParameter.IS_SYSTEM_MAINTENANCE = false;
+        } else {
+            SystemParameter.IS_SYSTEM_MAINTENANCE = true;
+        }
+
         System.out.println("===============Quartz===============");
     }
 

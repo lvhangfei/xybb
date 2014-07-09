@@ -6,6 +6,12 @@ package com.xybb.system.parameter;
  */
 public class SystemParameter {
 
+    //是否在进行系统维护中
+    public static boolean IS_SYSTEM_MAINTENANCE = true;
+
+    //进行系统维护-提示信息
+    public static String SYSTEM_MAINTENANCE_MESSAGE = "";
+
     //Java 运行时环境版本
     public static final String JAVA_VERSION = System.getProperty("java.version");
 

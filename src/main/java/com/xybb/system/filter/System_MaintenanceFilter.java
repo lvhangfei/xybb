@@ -24,15 +24,13 @@ public class System_MaintenanceFilter implements Filter {
         if (SystemParameter.IS_SYSTEM_MAINTENANCE) {
             //判断请求是否是重定向到系统维护的链接
             HttpServletRequest request = (HttpServletRequest) servletRequest;
-            if (request.getRequestURI().indexOf("system_maintenance") == -1) {
+            if (request.getRequestURI().indexOf("/index/system_maintenance") == -1) {
                 HttpServletResponse response = (HttpServletResponse) servletResponse;
-                response.sendRedirect("index/system_maintenance");//重定向到系统维护页面
-            } else {
+                response.sendRedirect(request.getContextPath() + "/index/system_maintenance");//重定向到系统维护页面
+            } else
                 chain.doFilter(servletRequest, servletResponse);
-            }
-        } else {
+        } else
             chain.doFilter(servletRequest, servletResponse);
-        }
     }
 
     @Override

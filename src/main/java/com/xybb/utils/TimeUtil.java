@@ -8,7 +8,7 @@ import java.util.Date;
  * Created by lw on 14-6-15.
  * 时间日期操作工具类
  */
-public class TimeUtil {
+public final class TimeUtil {
 
     //定义日期-时间-周 的格式化字符串,lssues——月份为MM大写，小写默认为分钟数
     private static final String DATE = "yyyy-MM-dd";

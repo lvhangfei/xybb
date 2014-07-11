@@ -20,7 +20,7 @@ import java.net.UnknownHostException;
  * <p/>
  * ip地址解析
  */
-public class IpUtil {
+public final class IpUtil {
 
     private static final Log RUNTIME_LOG = LogFactoryUtil.RUNTIME_LOG;
 

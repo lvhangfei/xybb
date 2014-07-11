@@ -7,7 +7,7 @@ import org.apache.commons.logging.LogFactory;
  * Created by lw on 14-6-29.
  * 系统日志信息工厂
  */
-public class LogFactoryUtil {
+public final class LogFactoryUtil {
 
     public static final Log QUARTZ_LOG = LogFactory.getLog("quartzLog");
     public static final Log RUNTIME_LOG = LogFactory.getLog("runtimeLog");

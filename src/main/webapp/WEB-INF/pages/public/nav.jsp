@@ -108,24 +108,6 @@
                     </ul>
                 </c:otherwise>
 
-                <%--<c:otherwise>--%>
-                <%--<ul class="nav navbar-nav navbar-right">--%>
-                <%--<li  class="dropdown">--%>
-                <%--<a href="#" data-toggle="dropdown"> ${sessionScope.session2UserInfo.alias_Name }&nbsp;<i--%>
-                <%--class="icon-user"></i></a>--%>
-                <%--<ul class="dropdown-menu" role="menu">--%>
-                <%--<li class=""><a href="#icons-new">新图标</a></li>--%>
-                <%--<li class="divider"></li>--%>
-                <%--<li class=""><a href="#icons-web-app"><i class="icon-edit"></i> Web 应用</a></li>--%>
-                <%--<li class=""><a href="#icons-text-editor"><i class="icon-save"></i> 文本编辑器</a></li>--%>
-                <%--<li class=""><a href="#icons-directional"><i class="icon-hand-right"></i> 指示方向</a></li>--%>
-                <%--<li class=""><a href="#icons-video-player"><i class="icon-play"></i>视频播放器</a></li>--%>
-                <%--<li class=""><a href="#icons-social"><i class="icon-github"></i> SNS</a></li>--%>
-                <%--<li class=""><a href="#icons-medical"><i class="icon-stethoscope"></i> 医疗</a></li>--%>
-                <%--</ul>--%>
-                <%--</li>--%>
-                <%--</ul>--%>
-                <%--</c:otherwise>--%>
             </c:choose>
         </div>
 

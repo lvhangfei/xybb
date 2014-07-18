@@ -16,11 +16,11 @@ public class HealthJob {
 
     public void Quartz() {
 
-        if (SystemParameter.IS_SYSTEM_MAINTENANCE) {
+        /*if (SystemParameter.IS_SYSTEM_MAINTENANCE) {
             SystemParameter.IS_SYSTEM_MAINTENANCE = false;
         } else {
             SystemParameter.IS_SYSTEM_MAINTENANCE = true;
-        }
+        }*/
 
         System.out.println("===============Quartz===============");
     }

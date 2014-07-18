@@ -10,9 +10,9 @@ import org.apache.commons.mail.EmailException;
  */
 public class Email2Admin extends Email {
 
-    public static String FROM_EMAILNAME;//发送方email名称
-    public static String FROM_NAME;//发送方email别名
-    public static String FROM_PASSWORD;//发送方密码
+    private static String FROM_EMAILNAME;//发送方email名称
+    private static String FROM_NAME;//发送方email别名
+    private static String FROM_PASSWORD;//发送方密码
 
     static {
         FROM_EMAILNAME = EmailUtil.getValue("fromEmailName_admin");

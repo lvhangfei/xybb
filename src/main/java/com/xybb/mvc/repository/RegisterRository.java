@@ -14,8 +14,8 @@ import java.util.List;
 @Repository
 public interface RegisterRository extends MongoRepository<UserRegister, String> {
 
-    @Query("{'emailName':?0 ,'tag':?1}")
-    public UserRegister getUserByEmailName(String emailName, String tag);
+    @Query("{'emailName':?0 , 'uuid':?1 ,'tag':?2}")
+    public UserRegister getUserByEmailName(String emailName, String uuid ,int tag);
 
     @Query("{'registerTime':{'$lt':?0}}")
     public List<UserRegister> getUserRegistersByTime(long now);

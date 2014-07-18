@@ -54,11 +54,7 @@ public class RegisterService {
         long registerTime = TimeUtil.getNowTimeToHalfHourToLong();
         try {
             //设置临时用户注册信息
-            UserRegister userRegister = registerRository.getUserByEmailName(emailName, tag);
-            if (null != userRegister) {
-                registerRository.delete(userRegister.getId());
-            }
-            userRegister = new UserRegister();
+            UserRegister userRegister = new UserRegister();
             userRegister.setEmailName(emailName);
             userRegister.setPassword(password);
             userRegister.setRegisterTime(registerTime);
@@ -98,7 +94,7 @@ public class RegisterService {
      */
     public AjaxResult activate_Handle(String emailName, String uuid, String tag) {
 
-        UserRegister userRegister = registerRository.getUserByEmailName(emailName, tag);
+        UserRegister userRegister = registerRository.getUserByEmailName(emailName, uuid , 0);
 
         if (userRegister == null || !StringUtils.equals(uuid, userRegister.getUuid())) {
             return new AjaxResult("链接无效", false);

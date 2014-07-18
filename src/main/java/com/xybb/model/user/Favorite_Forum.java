@@ -1,4 +1,4 @@
-package com.xybb.model;
+package com.xybb.model.user;
 
 import org.springframework.data.annotation.Id;
 

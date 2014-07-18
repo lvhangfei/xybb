@@ -9,5 +9,4 @@ public final class IoUtil {
 
     private static final String FILE_SEPARATOR = SystemParameter.FILE_SEPARATOR;//路径分隔符
 
-
 }

@@ -73,7 +73,7 @@ public class RegisterService {
             StringBuffer buffer = new StringBuffer();
             buffer.append("<h3>欢迎注册校园帮帮用户，点击下面链接激活您的账号！</h3>");
             buffer.append("<h4>有效期为半小时,");
-            buffer.append("<a href=\"http://192.168.0.103").
+            buffer.append("<a href=\"http://localhost").
                     //buffer.append("<a href=\"http://").append(IpUtil.getLocalIp()).
                             append(":8080/xybb/register/activate/handle?emailName=").append(emailName).
                     append("&uuid=").append(uuid).append("&tag=0").append("\">点击激活</a></h4>");

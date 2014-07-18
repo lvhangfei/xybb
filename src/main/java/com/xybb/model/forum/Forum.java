@@ -2,7 +2,10 @@ package com.xybb.model.forum;
 
 import com.xybb.model.user.UserInfo;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.CompoundIndex;
+import org.springframework.data.mongodb.core.index.CompoundIndexes;
 import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
@@ -11,10 +14,13 @@ import java.util.List;
  * Created by lw on 14-6-19.
  * 帖子内容
  */
+@Component
+//@CompoundIndex(name = "blocked_inx", def = "{read_Num : 1, praise_Num : 1}")
 public class Forum {
 
     @Id
     private String id;
+
     private String title;//标题
     private List<String> keyword;//关键字
     private String content;//内容
@@ -32,7 +38,9 @@ public class Forum {
     @DBRef
     private UserInfo creator;//创建者
 
-    private Date createTime;//创建时间
+    private long createTime;//创建时间
+
+    private boolean isUpdate = false;//是否可以编辑
 
     private boolean isDel = false;//是否删除-逻辑删除
 
@@ -124,12 +132,20 @@ public class Forum {
         this.creator = creator;
     }
 
-    public Date getCreateTime() {
+    public long getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(long createTime) {
         this.createTime = createTime;
+    }
+
+    public boolean isUpdate() {
+        return isUpdate;
+    }
+
+    public void setUpdate(boolean isUpdate) {
+        this.isUpdate = isUpdate;
     }
 
     public boolean isDel() {

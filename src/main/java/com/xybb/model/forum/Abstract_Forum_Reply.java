@@ -20,7 +20,7 @@ public abstract class Abstract_Forum_Reply {
 
     @DBRef
     private UserInfo creator;//创建者
-    private Date createTime;//创建时间
+    private long createTime;//创建时间
 
     public String getId() {
         return id;
@@ -54,11 +54,11 @@ public abstract class Abstract_Forum_Reply {
         this.creator = creator;
     }
 
-    public Date getCreateTime() {
+    public long getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(long createTime) {
         this.createTime = createTime;
     }
 }

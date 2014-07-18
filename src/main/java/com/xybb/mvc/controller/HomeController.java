@@ -4,8 +4,7 @@ import com.xybb.cache.MemcachedClient_Demo;
 import com.xybb.model.user.Session2UserInfo;
 import com.xybb.mvc.service.HomeService;
 import com.xybb.system.parameter.ProjectParameter;
-import com.xybb.system.parameter.SensitiveQuestion;
-import com.xybb.utils.IpUtil;
+import com.xybb.utils.ip.IpUtil;
 import net.rubyeye.xmemcached.exception.MemcachedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -33,11 +32,9 @@ public class HomeController {
         view.setViewName("layouts.application_layout.index");
         model.addAttribute("message", "Hello world!");
         IpUtil.getIpAddr(request);
-
-        request.getSession().setAttribute(ProjectParameter.MENU_1, "home");
+        request.getSession().setAttribute(ProjectParameter.MENU_1_TEXT, "home");
         homeService.go_Home_Page(new Session2UserInfo(), request);
         String s = memcachedClient_demo.set2Get(new String[]{"1iwei", "1"});
-        System.out.println(SensitiveQuestion.SENSITIVEQUESTIONS);
         return view;
     }
 

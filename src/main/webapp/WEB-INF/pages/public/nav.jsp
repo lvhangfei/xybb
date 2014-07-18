@@ -9,24 +9,37 @@
         padding-top: 70px;
     }
 
-    .menu_1 {
-        border-bottom: 3px solid #d30d15;
+    .menu_1_text {
+        border-bottom: 3px solid #2aabd2;
+    }
+
+    .menu_1_icon {
+        color: #2aabd2;
+        font-family: "Cherry Swash", sans-serif;
     }
 </style>
 <script>
 
-    var menu_1 = "#" + "${sessionScope.menu_1}";
+    var menu_1_text = "${sessionScope.menu_1_text}";
+    var menu_1_icon = "${sessionScope.menu_1_icon}";
 
     $(function () {
-        $(menu_1).addClass("menu_1");
-        $("#search").mousedown(function () {
+
+        if (menu_1_text == "") {
+            $("#" + menu_1_icon).css("color", "#2aabd2");
+        } else {
+            $("#" + menu_1_text).addClass("menu_1_text");
+        }
+
+        $("#search").focus(function () {
             $("#home,#affective,#secondhand").hide();
             $("#search").css("width", "430px");
         });
-        $("#search").mouseout(function () {
+        $("#search").blur(function () {
             $("#home,#affective,#secondhand").show();
             $("#search").css("width", "200px");
         });
+        $("#userinfo,#userinfo_setting,#plus,#message,#out").tooltip();
     });
 
 </script>
@@ -40,7 +53,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><i class="icon-flag pull-left"></i>校园帮帮</a>
+            <a class="navbar-brand" href="#"><i class="icon-flag pull-left"></i>${applicationScope.PROJECTNAME}</a>
         </div>
 
         <form class="navbar-form navbar-left" role="search">
@@ -60,36 +73,47 @@
                 <%--<li id="graduate"><a href="<%=basePath%>graduate">我们毕业了</a></li>--%>
                 <li id="help"><a href="<%=basePath%>help">找人帮忙</a></li>
             </ul>
-
             <c:choose>
 
-                <c:when test="${empty sessionScope.userName }">
+                <c:when test="${empty sessionScope.session2UserInfo }">
                     <ul class="nav navbar-nav navbar-right">
-                        <li id="login"><a href="<%=basePath%>login"> Login</a></li>
+                        <li id="login"><a href="<%=basePath%>login"> 登录</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li id="register"><a href="<%=basePath%>register"> 注册</a></li>
                     </ul>
                 </c:when>
 
                 <c:otherwise>
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a href="#" data-toggle="dropdown"> LIWEI&nbsp;<i class="icon-user"></i></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li class=""><a href="#icons-new">新图标</a></li>
-                                <li class="divider"></li>
-                                <li class=""><a href="#icons-web-app"><i class="icon-edit"></i> Web 应用</a></li>
-                                <li class=""><a href="#icons-text-editor"><i class="icon-save"></i> 文本编辑器</a></li>
-                                <li class=""><a href="#icons-directional"><i class="icon-hand-right"></i> 指示方向</a></li>
-                                <li class=""><a href="#icons-video-player"><i class="icon-play"></i>视频播放器</a></li>
-                                <li class=""><a href="#icons-social"><i class="icon-github"></i> SNS</a></li>
-                                <li class=""><a href="#icons-medical"><i class="icon-stethoscope"></i> 医疗</a></li>
-                            </ul>
+                        <li id="userinfo" data-toggle="tooltip" data-placement="bottom" title="我的个人信息">
+                            <a id="userinfo_icon" href="#"><i class="fa fa-user fa-fw"></i> </a>
+                        </li>
+                        <li id="userinfo_setting" data-toggle="tooltip" data-placement="bottom" title="设置个人信息"
+                            style="color: red">
+                            <a id="userinfo_setting_icon"
+                               href="<%=basePath%>userinfo/${sessionScope.session2UserInfo.userInfo_Id}/setting">
+                                <i class="fa fa-cog"></i></a>
+                        </li>
+                        <li id="plus" data-toggle="tooltip" data-placement="bottom" title="发布信息">
+                            <a id="plus_icon" href="#"><i class="fa fa-pencil-square-o"></i></a>
+                        </li>
+                        <li id="message" data-toggle="tooltip" data-placement="bottom" title="查看我的消息">
+                            <a id="message_icon" href="#"><i class="fa fa-envelope-o"></i></a>
+                        </li>
+                        <li id="out" data-toggle="tooltip" data-placement="bottom" title="注销">
+                            <a href="javascript:;" onclick="login_Out('<%=basePath%>login/out')">
+                                <i class="fa fa-power-off"></i></a>
                         </li>
                     </ul>
                 </c:otherwise>
+
             </c:choose>
         </div>
+
     </div>
     <!--/.nav-collapse -->
 </div>
+
 </div>
 

@@ -11,9 +11,16 @@ import org.springframework.stereotype.Component;
 public class ProjectParameter {
 
     public static final String READ_FILE_ENCODINGS = "utf-8";//读取文件编码
-    public static final String MENU_1 = "menu_1";//一级菜单
-    public static final String MENU_2 = "menu_2";//二级菜单
-    public static final String MENU_3 = "menu_3";//三级菜单
+    public static final String MENU_1_TEXT = "menu_1_text";//一级菜单激活
+    public static final String MENU_2_TEXT = "menu_2_text";//二级菜单激活
+    public static final String MENU_3_TEXT = "menu_3_text";//三级菜单激活
+
+    public static final String MENU_1_ICON = "menu_1_icon";//一级菜单激活
+    public static final String MENU_2_ICON = "menu_2_icon";//二级菜单激活
+    public static final String MENU_3_ICON = "menu_3_icon";//三级菜单激活
+
+    //百度IP接口调用--用户密钥
+    public static final String BAIDU_IP_API_AK = "EFfee49fcb850d465bd2d2d26b30b050";
 
     //系统运行时上下文路径-listener 启动后初始化
     public static String APPLICATIONCONTEXT_PATH;

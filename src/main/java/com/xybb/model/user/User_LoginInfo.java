@@ -17,11 +17,13 @@ public class User_LoginInfo implements Serializable {
 
     @Id
     private String id;
-    private String user_Id;
+    @DBRef
+    private UserInfo userInfo;
 
-    private Date time;//登录时间
+    private long time;//登录时间
     private String ip;//登录IP
-    private String os;//登录系统
+    private String os;//用户系统信息
+    private String address;//登录地址
 
     public String getId() {
         return id;
@@ -31,19 +33,19 @@ public class User_LoginInfo implements Serializable {
         this.id = id;
     }
 
-    public String getUser_Id() {
-        return user_Id;
+    public UserInfo getUserInfo() {
+        return userInfo;
     }
 
-    public void setUser_Id(String user_Id) {
-        this.user_Id = user_Id;
+    public void setUserInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
     }
 
-    public Date getTime() {
+    public long getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(long time) {
         this.time = time;
     }
 
@@ -61,5 +63,13 @@ public class User_LoginInfo implements Serializable {
 
     public void setOs(String os) {
         this.os = os;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

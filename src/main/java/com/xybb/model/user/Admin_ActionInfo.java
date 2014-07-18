@@ -1,6 +1,7 @@
 package com.xybb.model.user;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
 /**
  * Created by lw on 14-6-22.
@@ -10,9 +11,10 @@ public class Admin_ActionInfo {
 
     @Id
     private String id;
-    private String user_Id;
+    @DBRef
+    private UserInfo userInfo;
 
-    private int action_Num;//用户动作： 1删除帖子 2删除回复
+    private int action_Num;//动作： 1删除帖子 2删除回复
 
     private String action_Id;//对应的帖子ID
 
@@ -29,12 +31,12 @@ public class Admin_ActionInfo {
         this.id = id;
     }
 
-    public String getUser_Id() {
-        return user_Id;
+    public UserInfo getUserInfo() {
+        return userInfo;
     }
 
-    public void setUser_Id(String user_Id) {
-        this.user_Id = user_Id;
+    public void setUserInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
     }
 
     public int getAction_Num() {

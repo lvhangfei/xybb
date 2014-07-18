@@ -21,4 +21,14 @@
         <put-attribute name="main-container" value="/WEB-INF/pages/login/login.jsp"/>
     </definition>
 
+    <!--注册页-->
+    <definition name="layouts.application_layout.register" extends="layouts.public_layout">
+        <put-attribute name="main-container" value="/WEB-INF/pages/login/register.jsp"/>
+    </definition>
+
+    <!--用户个人信息设置-->
+    <definition name="layouts.application_layout.userinfo_setting" extends="layouts.public_layout">
+        <put-attribute name="main-container" value="/WEB-INF/pages/userinfo_setting/userinfo_setting.jsp"/>
+    </definition>
+
 </tiles-definitions>
